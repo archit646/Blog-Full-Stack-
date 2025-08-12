@@ -1,51 +1,61 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Navbar } from './components/Navbar';
+import {Home} from './components/pages/Home';
+import { About } from './components/pages/About';
+import { Contact } from './components/pages/Contact';
 import { Slider } from './components/Slider';
 import { Card } from './components/Card';
 import { Sidebar } from './components/sidebar';
 import { Main_posts } from './components/Main_posts';
+import axios from 'axios';
+import { Route, Routes } from 'react-router';
 // import './App.css'
 
 function App() {
+  const [posts,setPosts]=useState([])
+  const [category,setCategory]=useState([])
+  async function getPosts(){
+    try{
+    let res=await axios('http://127.0.0.1:8000/api/posts/')
+    setPosts(res.data)
+    }
+    catch(error){
+      console.log(error)
+
+    }
+  }
+
+  async function getCate(){
+    try{
+    let res=await axios('http://127.0.0.1:8000/api/categories/')
+    setCategory(res.data)
+    }
+    catch(error){
+      console.log(error)
+
+    }
+  }
+  useEffect(()=>{
+    getPosts()
+    getCate()
+    
+  },[])
+
+   useEffect(()=>{
+    console.log(posts)
+    
+  },[posts])
 
   return (
     <>
-      <div className='main bg-green-200 flex flex-col'>
-        <Navbar />
-        <div className='trending mt-[70px]'>
-          <h1 className='text-center text-3xl font-bold p-3 bg-'>Trending Posts</h1>
-          <Slider />
-        </div>
-        <div className='container grid grid-cols-12'>
-          <div className='col-span-4 sm:col-span-2'>
-            <h1 className='text-center text-xl sm:text-3xl font-bold p-3 bg-'>Recent Posts</h1>
-
-            <Sidebar />
-          </div>
-
-          <div className='col-span-8 border sm:col-span-10'>
-            <h1 className='text-center text-2xl sm:text-3xl font-bold p-3'>All Posts</h1>
-            <div className='category flex justify-center gap-3 w-[98%] mx-auto bg-blue-600 p-3'>
-              <h2 className='bg-yellow-600 text-white font-semibold rounde-sm'>All</h2>
-              <h2 className='bg-yellow-600 text-white font-semibold rounde-sm'>All</h2>
-              <h2 className='bg-yellow-600 text-white font-semibold rounde-sm'>All</h2>
-              <h2 className='bg-yellow-600 text-white font-semibold rounde-sm'>All</h2>
-              <h2 className='bg-yellow-600 text-white font-semibold rounde-sm'>All</h2>
-              
-
-
-
-            </div>
-
-            <Main_posts />
-
-          </div>
-
-        </div>
-
-      </div >
+<Navbar/>
+<Routes>
+  <Route path='/' element={<Home posts={posts} category={category}/>}></Route>
+  <Route path='about/' element={<About/>}></Route>
+  <Route path='contact/' element={<Contact/>}></Route>
+</Routes>
     </>
 
   )

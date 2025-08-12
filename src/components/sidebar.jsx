@@ -1,14 +1,16 @@
-export function Sidebar(){
-    return(
+export function Sidebar({ posts }) {
+    return (
         <>
-        <div className={`sidebar border p-3`}>
-            <div className="border-t-2 flex items-center">
-                <img className="size-[40%] object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS2oJhomgauxnVZPabIUVUY_wahMwm_2NDXw&s" alt="" />
-                <h2 className="line-clamp-2 break-words">fkdsjfkfjflkjdflkjflkdhjfkdjlkjfkfkjkj</h2>
+            <div className="border">
+                {posts?.map((item) => {
+                   return <div key={item.id} className="border-t-2 flex items-center p-3 gap-2">
+                        <img className="size-[20%] object-cover" src={item.thumbnail} alt="" />
+                        <h2 className="line-clamp-2 break-words font-semibold">{item.title}</h2>
+                    </div>
+
+                })}
 
             </div>
-
-        </div>
         </>
     )
 }
