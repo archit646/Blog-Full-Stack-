@@ -15,10 +15,11 @@ import { Route, Routes } from 'react-router';
 
 function App() {
   const [posts,setPosts]=useState([])
+  const [recent,setRecent]=useState([])
   const [category,setCategory]=useState([])
   async function getPosts(){
     try{
-    let res=await axios('http://127.0.0.1:8000/api/posts/')
+    let res=await axios('http://192.168.51.150:8000/api/posts/')
     setPosts(res.data)
     }
     catch(error){
@@ -27,9 +28,22 @@ function App() {
     }
   }
 
+  async function getRecent(){
+    try{
+    let res=await axios('http://192.168.51.150:8000/api/posts/recent')
+    setRecent(res.data)
+    }
+    catch(error){
+      console.log(error)
+
+    }
+  }
+
+  
+
   async function getCate(){
     try{
-    let res=await axios('http://127.0.0.1:8000/api/categories/')
+    let res=await axios('http://192.168.51.150:8000/api/categories/')
     setCategory(res.data)
     }
     catch(error){
@@ -40,19 +54,20 @@ function App() {
   useEffect(()=>{
     getPosts()
     getCate()
+    getRecent()
     
   },[])
 
    useEffect(()=>{
-    console.log(posts)
+    console.log(recent)
     
-  },[posts])
+  },[recent])
 
   return (
     <>
 <Navbar/>
 <Routes>
-  <Route path='/' element={<Home posts={posts} category={category}/>}></Route>
+  <Route path='/' element={<Home posts={posts} recent={recent} category={category}/>}></Route>
   <Route path='about/' element={<About/>}></Route>
   <Route path='contact/' element={<Contact/>}></Route>
 </Routes>
