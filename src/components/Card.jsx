@@ -9,7 +9,7 @@ export function Card({item}){
                 <NavLink to={`detail/posts/${item.id}`}><h1 className="line-clamp-2 text-xl font-semibold">{item.title}</h1></NavLink>
                 <div className="sub-content flex justify-around">
                     <span>{item.author?.username}</span>
-                    <span>date</span>
+                    <span>{item.created_at}</span>
                 </div>
             </div>
         </div>
