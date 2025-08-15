@@ -1,10 +1,10 @@
 import { Card } from "./Card";
 
 export function Main_posts({ posts, selectedCate }) {
-    console.log(selectedCate)
+    // console.log(selectedCate)
     var filterdPosts = selectedCate == 'all' || !selectedCate
         ? posts
-        : posts.filter((post) => post.category.name == selectedCate)
+        : posts.filter((post) => post.category === selectedCate)
 
 
 

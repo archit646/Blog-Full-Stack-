@@ -11,6 +11,9 @@ import { Sidebar } from './components/sidebar';
 import { Main_posts } from './components/Main_posts';
 import axios from 'axios';
 import { Route, Routes } from 'react-router';
+import { Detail } from './components/pages/Detail';
+import { NewPost } from './components/pages/NewPost';
+import { Footer } from './components/Footer';
 // import './App.css'
 
 function App() {
@@ -19,7 +22,7 @@ function App() {
   const [category,setCategory]=useState([])
   async function getPosts(){
     try{
-    let res=await axios('http://192.168.51.150:8000/api/posts/')
+    let res=await axios('http://127.0.0.1:8000/api/posts/')
     setPosts(res.data)
     }
     catch(error){
@@ -30,7 +33,7 @@ function App() {
 
   async function getRecent(){
     try{
-    let res=await axios('http://192.168.51.150:8000/api/posts/recent')
+    let res=await axios('http://127.0.0.1:8000/api/posts/recent')
     setRecent(res.data)
     }
     catch(error){
@@ -43,7 +46,7 @@ function App() {
 
   async function getCate(){
     try{
-    let res=await axios('http://192.168.51.150:8000/api/categories/')
+    let res=await axios('http://127.0.0.1:8000/api/categories/')
     setCategory(res.data)
     }
     catch(error){
@@ -55,11 +58,12 @@ function App() {
     getPosts()
     getCate()
     getRecent()
+    // console.log(category)
     
   },[])
 
    useEffect(()=>{
-    console.log(recent)
+    // console.log(recent)
     
   },[recent])
 
@@ -70,7 +74,10 @@ function App() {
   <Route path='/' element={<Home posts={posts} recent={recent} category={category}/>}></Route>
   <Route path='about/' element={<About/>}></Route>
   <Route path='contact/' element={<Contact/>}></Route>
+  <Route path='detail/posts/:pk/' element={<Detail/>}></Route>
+  <Route path='newPost/' element={<NewPost categories={category}/>}></Route>
 </Routes>
+<Footer/>
     </>
 
   )

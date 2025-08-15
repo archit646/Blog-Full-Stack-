@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from 'react-router-dom'
 import { FaBars } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
+import { IoMdAdd } from "react-icons/io";
 export function Navbar() {
     const [menu, setMenu] = useState(false)
     return (
@@ -21,6 +22,7 @@ export function Navbar() {
 
             </div>
             <div className="auth-btn flex gap-3">
+                <NavLink to='newPost/' className="bg-green-600 text-white font-semibold px-3 py-1 rounded-sm flex items-center"><IoMdAdd className="font-bold text-2xl"/>New Post</NavLink>
                 <button className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm">Login</button>
                 <button className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm">SignUp</button>
 
