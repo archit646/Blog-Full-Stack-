@@ -1,16 +1,7 @@
-// export function Contact(){
-//     return(
-//         <>
-//         <div className="mt-[60px] h-screen">
-//         <h1>This is Contact Page</h1><br></br>
-        
-//         </div>
-//         </>
-//     )
-// }
+
 export function Contact() {
   return (
-    <div className="max-w-4xl mx-auto p-6 h-screen">
+    <div className="max-w-4xl mx-auto p-6 h-screen pt-[70px]">
       {/* Title */}
       <h1 className="text-3xl font-bold text-center mb-4">Contact Us</h1>
       <p className="text-center text-gray-600 mb-8">
@@ -44,8 +35,8 @@ export function Contact() {
         <div className="bg-gray-50 shadow-md rounded-2xl p-6 space-y-4">
           <h2 className="text-xl font-semibold">Get in Touch</h2>
           <p>📍 Miranpur, Near Sangeet Cinema</p>
-          <p>📞 +91 7520106895</p>
-          <p>✉️ support@yourblog.com</p>
+          <p>📞 +91 9084847255</p>
+          <p>✉️ architk471@gmail.com</p>
 
           <div className="flex gap-4 mt-4">
             <a href="#" className="text-blue-500 hover:underline">Facebook</a>
