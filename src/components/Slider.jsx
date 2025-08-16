@@ -30,7 +30,7 @@ export function Slider({ posts }) {
     }, [])
     return (
         <>
-            <div className="relative overflow-hidden p-6">
+            <div className="relative overflow-hidden px-6 py-3">
                 <div className={'post-container overflow-hidden scroll-smooth flex gap-4'}>
                     {trending?.map((item) =>
                         <Card key={item.id} item={item} />

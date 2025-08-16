@@ -34,8 +34,8 @@ export function NewPost({ categories }) {
         <>
             <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 to-blue-200 shadow-md shadow-black">
                 <div className="border bg-amber-500 rounded-md text-white w-[400px] h-auto p-3 m-auto my-auto flex flex-col gap-3 shadow-xl shadow-black">
-                    <h1 className="text-center font-bold w-[80%] mx-auto bg-blue-800 p-2 text-white ">Create New Post</h1>
-                    <form onSubmit={handleSubmit} className="border flex flex-col items-center h-auto w-full gap-4 bg-blue-800 p-4">
+                    <h1 className="text-center font-bold w-[80%] mx-auto bg-blue-800 p-2 text-white rounded-2xl">Create New Post</h1>
+                    <form onSubmit={handleSubmit} className="border flex flex-col items-center h-auto w-full gap-4 bg-blue-800 p-4 rounded-2xl">
                         <div className="w-full">
                             <span className="font-semibold">Title</span>
                             <input className="w-full border p-1 bg-gray-500" type='text' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
@@ -54,9 +54,9 @@ export function NewPost({ categories }) {
                         </div>
                         <div className="flex flex-col w-full">
                             <span className="font-semibold">Thumbnail</span>
-                            <input className="bg-gray-500 p-1 px-2 text-white font-semibold" type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])}></input>
+                            <input className="bg-gray-500 p-1 px-2 text-white font-semibold cursor-pointer" type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])}></input>
                         </div>
-                        <button type="submit" className="w-[30%] border rounded-sm font-semibold bg-red-700 text-white">Post</button>
+                        <button type="submit" className="w-[30%] border rounded-sm font-semibold bg-red-700 text-white cursor-pointer">Post</button>
 
                     </form>
                 </div>

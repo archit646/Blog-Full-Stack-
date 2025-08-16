@@ -7,9 +7,9 @@ export function Home({ posts, category, recent }) {
     
     return (
         <>
-            <div className='main bg-green-200 flex flex-col '>
+            <div className='main bg-green-200 flex flex-col'>
                 <div className='trending pt-[70px]'>
-                    <h1 className='text-center text-3xl font-bold p-3 bg-'>Trending Posts</h1>
+                    <h1 className='text-center text-3xl font-bold'>Trending Posts</h1>
                     <Slider posts={posts} />
                 </div>
                 <div className='grid grid-cols-12 gap-3'>

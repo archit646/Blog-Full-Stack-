@@ -7,10 +7,10 @@ export function Navbar() {
     const [menu, setMenu] = useState(false)
     return (
         <>
-        <div className="navbar fixed w-full z-50 border flex items-center justify-between sm:justify-around p-4 bg-amber-400 top-0">
-            <div className="logo">
-                <h1 className="text-2xl">My Logo</h1>
-            </div>
+        <div className="navbar fixed w-full z-50 border flex items-center justify-between sm:justify-around  bg-amber-400 top-0">
+            
+                <img className="logo w-[4.5%] h-[6%] scale-[130%]  object-contain" src="https://cdn-icons-png.flaticon.com/512/10026/10026257.png" alt="logo" />
+            
             <div className="links hidden sm:block">
                 <ul className="flex gap-3">
                     
@@ -23,8 +23,8 @@ export function Navbar() {
             </div>
             <div className="auth-btn flex gap-3">
                 <NavLink to='newPost/' className="bg-green-600 text-white font-semibold px-3 py-1 rounded-sm flex items-center"><IoMdAdd className="font-bold text-2xl"/>New Post</NavLink>
-                <button className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm">Login</button>
-                <button className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm">SignUp</button>
+                <NavLink to='loginReg/' className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm">Login/Register</NavLink>
+                
 
             </div>
             <div className="toggle-container sm:hidden">

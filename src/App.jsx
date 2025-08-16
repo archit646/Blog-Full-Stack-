@@ -14,6 +14,7 @@ import { Route, Routes } from 'react-router';
 import { Detail } from './components/pages/Detail';
 import { NewPost } from './components/pages/NewPost';
 import { Footer } from './components/Footer';
+import { LoginReg } from './components/pages/LoginReg';
 // import './App.css'
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
   <Route path='contact/' element={<Contact/>}></Route>
   <Route path='detail/posts/:pk/' element={<Detail/>}></Route>
   <Route path='newPost/' element={<NewPost categories={category}/>}></Route>
+  <Route path='loginReg/' element={<LoginReg />}></Route>
 </Routes>
 <Footer/>
     </>
