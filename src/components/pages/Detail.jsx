@@ -1,10 +1,12 @@
 import axios from "axios"
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { Sidebar } from "../sidebar"
 import { useEffect, useState } from "react"
 import { IoPerson } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
 export function Detail() {
+    const navigate=useNavigate()
     const { pk } = useParams()
     const [releated, setReleated] = useState([])
     const [singlePost, setSinglePost] = useState({})
@@ -15,6 +17,11 @@ export function Detail() {
     async function getsingle() {
         const res = await axios.get(`http://127.0.0.1:8000/api/posts/${pk}/`)
         setSinglePost(res.data)
+    }
+    async function deletePost() {
+        const res = await axios.delete(`http://127.0.0.1:8000/api/posts/${pk}/`)
+        navigate('/')
+        console.log('success')
     }
     useEffect(() => {
         getreleated()
@@ -34,8 +41,8 @@ export function Detail() {
                             <span className="py-1 px-2 bg-gray-800 flex items-center gap-1"><SlCalender/>Created-<span>{singlePost.created_at}</span></span>
                         </div> 
                         <div className="btn-container text-white flex gap-2">
-                            <button className=" px-2 py-1 bg-green-500 font-semibold rounded-sm">Update</button>
-                            <button className=" px-2 py-1 bg-red-500 font-semibold rounded-sm">Delete</button>
+                            <button className=" px-2 flex justify-center items-center py-1 bg-green-500 font-semibold rounded-sm cursor-pointer">Update</button>
+                            <button onClick={deletePost} className=" px-2 flex justify-center items-center py-1 bg-red-500 font-semibold rounded-sm cursor-pointer">Delete</button>
 
                         </div>
                     </div>

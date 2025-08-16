@@ -14,9 +14,12 @@ import { Detail } from './components/pages/Detail';
 import { NewPost } from './components/pages/NewPost';
 import { Footer } from './components/Footer';
 import { LoginReg } from './components/pages/LoginReg';
+import { useLocation } from 'react-router';
 // import './App.css'
 
 function App() {
+  const location=useLocation();
+  
   const [posts,setPosts]=useState([])
   const [recent,setRecent]=useState([])
   const [category,setCategory]=useState([])
@@ -60,7 +63,7 @@ function App() {
     getRecent()
     // console.log(category)
     
-  },[])
+  },[location])
 
    useEffect(()=>{
     // console.log(recent)

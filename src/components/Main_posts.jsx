@@ -1,6 +1,8 @@
 import { Card } from "./Card";
+import { useLocation } from "react-router";
 
 export function Main_posts({ posts, selectedCate }) {
+    const location=useLocation();
     // console.log(selectedCate)
     var filterdPosts = selectedCate == 'all' || !selectedCate
         ? posts

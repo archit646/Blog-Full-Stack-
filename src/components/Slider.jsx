@@ -3,7 +3,10 @@ import { Card } from "./Card"
 import axios from "axios"
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
+
 export function Slider({ posts }) {
+    
+
     const [trending, setTrending] = useState([])
     let box = document.querySelector('.post-container')
     const prevbtn = () => {
@@ -31,7 +34,7 @@ export function Slider({ posts }) {
     return (
         <>
             <div className="relative overflow-hidden px-6 py-3">
-                <div className={'post-container overflow-hidden scroll-smooth flex gap-4'}>
+                <div className={'post-container overflow-hidden scroll-smooth flex gap-4 py-3'}>
                     {trending?.map((item) =>
                         <Card key={item.id} item={item} />
                     )}
