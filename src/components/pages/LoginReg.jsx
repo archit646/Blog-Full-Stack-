@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 export function LoginReg() {
 
     const [active, setActive] = useState('login')
-    const [registerData, setRegisterData] = useState({ 'username': '', 'email': '', 'password': '' })
+    const [registerData, setRegisterData] = useState({ 'username': '', 'email': '', 'password': '' , 'check':false , 'confirm_password':'' })
     const [loginData, setLoginData] = useState({ 'email': '', 'password': '' })
     const handleRegisterChange = (e) => {
         setRegisterData({
@@ -21,12 +21,30 @@ export function LoginReg() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
+         if(registerData.username==='' || registerData.email==='' || registerData.password==='' || registerData.confirm_password===''){
+            alert('All Fields Are Required')
+            return;
+        }
+        if(registerData.password!=registerData.confirm_password){
+            alert('Confirm Password is not Same')
+            return;
+        }
+        if(registerData.check===false){
+            alert('Please Check the Box')
+            return;
+        }
+       
+        const payload={
+            username:registerData.username,
+            email:registerData.email,
+            password:registerData.password
+        }
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/register/', registerData)
+            const res = await axios.post('http://127.0.0.1:8000/api/register/', payload)
             // setRegisterData({ 'username': '', 'email': '', 'password': '' })
             console.log(res.data)
             alert('Registerd Successfully')
-            setRegisterData({ 'username': '', 'email': '', 'password': '' })
+            setRegisterData({ 'username': '', 'email': '', 'password': '' , 'confirm_password':'' , 'check':false })
            
             setActive('login')
         } catch (error) {
@@ -74,12 +92,12 @@ export function LoginReg() {
                                     <span className=" w-full font-semibold">Password</span>
                                     <input name="password" type="password" value={registerData.password} placeholder="Password" className="border w-full p-2 rounded-md" onChange={handleRegisterChange}></input>
                                 </div>
-                                {/* <div className="row">
+                                <div className="row">
                                     <span className=" w-full font-semibold">Confirm Password</span>
-                                    <input type="confirm_password" placeholder="Password" className="border w-full p-2 rounded-md" onChange={handleRegisterChange}></input>
-                                </div> */}
+                                    <input type="password" name="confirm_password" placeholder="Password" className="border w-full p-2 rounded-md" onChange={handleRegisterChange}></input>
+                                </div>
                                 <div className="row flex gap-2 items-center">
-                                    <input type="checkbox" className=""></input>
+                                    <input type="checkbox" value={registerData.check} className="" name="check" onChange={handleRegisterChange}></input>
                                     <span className=" w-full font-semibold">I agree to Terms & Conditions</span>
                                 </div>
 
