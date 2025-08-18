@@ -19,10 +19,11 @@ import { useLocation } from 'react-router';
 
 function App() {
   const location=useLocation();
-  
   const [posts,setPosts]=useState([])
   const [recent,setRecent]=useState([])
   const [category,setCategory]=useState([])
+  const [user,setUser]=useState('')
+  
   async function getPosts(){
     try{
     let res=await axios('http://127.0.0.1:8000/api/posts/')
@@ -72,14 +73,14 @@ function App() {
 
   return (
     <>
-<Navbar/>
+<Navbar user={user} setUser={setUser}/>
 <Routes>
   <Route path='/' element={<Home posts={posts} recent={recent} category={category}/>}></Route>
   <Route path='about/' element={<About/>}></Route>
   <Route path='contact/' element={<Contact/>}></Route>
   <Route path='detail/posts/:pk/' element={<Detail/>}></Route>
   <Route path='newPost/' element={<NewPost categories={category}/>}></Route>
-  <Route path='loginReg/' element={<LoginReg />}></Route>
+  <Route path='loginReg/' element={<LoginReg setUser={setUser}/>}></Route>
 </Routes>
 <Footer/>
     </>

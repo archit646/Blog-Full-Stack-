@@ -1,12 +1,15 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router"
 
 
-export function LoginReg() {
+export function LoginReg({setUser}) {
+    const navigate=useNavigate()
 
     const [active, setActive] = useState('login')
     const [registerData, setRegisterData] = useState({ 'username': '', 'email': '', 'password': '' , 'check':false , 'confirm_password':'' })
-    const [loginData, setLoginData] = useState({ 'email': '', 'password': '' })
+    const [loginData, setLoginData] = useState({ 'username': '', 'password': '' })
+    
     const handleRegisterChange = (e) => {
         setRegisterData({
             ...registerData,
@@ -19,7 +22,7 @@ export function LoginReg() {
             [e.target.name]: e.target.value
         })
     }
-    const handleSubmit = async (e) => {
+    const handleRegisterSubmit = async (e) => {
         e.preventDefault()
          if(registerData.username==='' || registerData.email==='' || registerData.password==='' || registerData.confirm_password===''){
             alert('All Fields Are Required')
@@ -51,6 +54,25 @@ export function LoginReg() {
             console.log(error)
         }
     }
+    const handleLoginSubmit=async(e)=>{
+        e.preventDefault()
+        const payload={username:loginData.username,password:loginData.password}
+        try{
+            const res=await axios.post('http://127.0.0.1:8000/api/token/',payload)
+            // jwt token
+            localStorage.setItem('access_token',res.data.access);
+            localStorage.setItem('refresh_token',res.data.refresh);
+            alert('Login Successfully')
+            setUser(loginData.username)
+            navigate('/')
+            console.log('login Successfull')
+        }catch(error){
+            console.log(error)
+            
+
+        }
+    }
+    
    
     return (
         <>
@@ -66,10 +88,10 @@ export function LoginReg() {
                     </div>
                     <div className="form-container w-[70%] h-[80%] p-3  rounded-2xl ">
                         {active == 'login'
-                            ? <form action="" className="login-form flex flex-col gap-5 p-3 rounded-2xl  bg-gray-200">
+                            ? <form onSubmit={handleLoginSubmit} className="login-form flex flex-col gap-5 p-3 rounded-2xl  bg-gray-200">
                                 <div className="row">
-                                    <span className=" w-full font-semibold" >Email</span>
-                                    <input name="email" value={loginData.email} type="email" placeholder="Email" className="border w-full p-2 rounded-md" onChange={handleLoginChange}></input>
+                                    <span className=" w-full font-semibold" >Username</span>
+                                    <input name="username" value={loginData.username} type="text" placeholder="Username" className="border w-full p-2 rounded-md" onChange={handleLoginChange}></input>
                                 </div>
                                 <div className="row">
                                     <span className=" w-full font-semibold">Password</span>
@@ -79,7 +101,7 @@ export function LoginReg() {
 
 
                             </form>
-                            : <form onSubmit={handleSubmit} className="register-form flex flex-col gap-5 p-3 bg-gray-200 rounded-2xl">
+                            : <form onSubmit={handleRegisterSubmit} className="register-form flex flex-col gap-5 p-3 bg-gray-200 rounded-2xl">
                                 <div className="row">
                                     <span className=" w-full font-semibold">Username</span>
                                     <input name="username" value={registerData.username} type="text" placeholder="Username" className="border w-full p-2 rounded-md" onChange={handleRegisterChange}></input>

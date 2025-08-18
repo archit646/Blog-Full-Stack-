@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { FaBars } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdAdd } from "react-icons/io";
-export function Navbar() {
+export function Navbar({user,setUser}) {
     const [menu, setMenu] = useState(false)
+    const navigate=useNavigate()
+    const handleLogout=()=>{
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+        setUser(null)
+        navigate('loginReg/')
+
+    }
     return (
         <>
         <div className="navbar fixed w-full z-50 border flex items-center justify-between sm:justify-around  bg-amber-400 top-0">
@@ -21,9 +29,15 @@ export function Navbar() {
                 </ul>
 
             </div>
-            <div className="auth-btn flex gap-3">
+            <div className="auth-btn flex gap-5">
                 <NavLink to='newPost/' className="bg-green-600 text-white font-semibold px-3 py-1 rounded-sm flex items-center"><IoMdAdd className="font-bold text-2xl"/>New Post</NavLink>
-                <NavLink to='loginReg/' className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm">Login/Register</NavLink>
+                {user
+                ?<div className="flex items-center justify-center gap-[2px]">
+                <h1 className="border flex  items-center justify-center font-bold text-xl p-1 rounded-2xl bg-violet-700 text-white">{user}</h1>
+                <button className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer" onClick={handleLogout}>Logout</button>
+                </div>
+                :<NavLink to='loginReg/' className="bg-pink-700 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer">Login/Register</NavLink>
+                }
                 
 
             </div>
