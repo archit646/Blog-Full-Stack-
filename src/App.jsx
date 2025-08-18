@@ -9,24 +9,28 @@ import { Card } from './components/Card';
 import { Sidebar } from './components/sidebar';
 import { Main_posts } from './components/Main_posts';
 import axios from 'axios';
-import { Route, Routes } from 'react-router';
+import { replace, Route, Routes, useNavigate } from 'react-router';
 import { Detail } from './components/pages/Detail';
 import { NewPost } from './components/pages/NewPost';
 import { Footer } from './components/Footer';
 import { LoginReg } from './components/pages/LoginReg';
 import { useLocation } from 'react-router';
+import { Navigate } from 'react-router';
+
 // import './App.css'
 
 function App() {
+  const token=localStorage.getItem('access_token')
+
   const location=useLocation();
   const [posts,setPosts]=useState([])
   const [recent,setRecent]=useState([])
   const [category,setCategory]=useState([])
-  const [user,setUser]=useState('')
+  const [user,setUser]=useState(localStorage.getItem('username') || '')
   
   async function getPosts(){
     try{
-    let res=await axios('http://127.0.0.1:8000/api/posts/')
+      let res = await axios.get('http://127.0.0.1:8000/api/posts/')
     setPosts(res.data)
     }
     catch(error){
@@ -37,7 +41,7 @@ function App() {
 
   async function getRecent(){
     try{
-    let res=await axios('http://127.0.0.1:8000/api/posts/recent')
+    let res=await axios.get('http://127.0.0.1:8000/api/posts/recent')
     setRecent(res.data)
     }
     catch(error){
@@ -50,8 +54,9 @@ function App() {
 
   async function getCate(){
     try{
-    let res=await axios('http://127.0.0.1:8000/api/categories/')
-    setCategory(res.data)
+    let res=await axios.get('http://127.0.0.1:8000/api/categories/')
+      setCategory(res.data)
+
     }
     catch(error){
       console.log(error)
@@ -67,19 +72,20 @@ function App() {
   },[location])
 
    useEffect(()=>{
-    // console.log(recent)
+    console.log(category)
     
-  },[recent])
+  },[])
+
 
   return (
     <>
 <Navbar user={user} setUser={setUser}/>
 <Routes>
-  <Route path='/' element={<Home posts={posts} recent={recent} category={category}/>}></Route>
+  <Route path='/' element={<Home token={token} posts={posts} recent={recent} category={category} />}></Route>
   <Route path='about/' element={<About/>}></Route>
   <Route path='contact/' element={<Contact/>}></Route>
   <Route path='detail/posts/:pk/' element={<Detail/>}></Route>
-  <Route path='newPost/' element={<NewPost categories={category}/>}></Route>
+  <Route path='newPost/' element={<NewPost token={token} setUser={setUser} user={user} categories={category}/>}></Route>
   <Route path='loginReg/' element={<LoginReg setUser={setUser}/>}></Route>
 </Routes>
 <Footer/>

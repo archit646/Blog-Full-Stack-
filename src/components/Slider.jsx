@@ -4,7 +4,7 @@ import axios from "axios"
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 
-export function Slider({ posts }) {
+export function Slider({ posts,token}) {
     
 
     const [trending, setTrending] = useState([])

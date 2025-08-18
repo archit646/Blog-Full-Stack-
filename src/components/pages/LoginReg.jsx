@@ -56,23 +56,38 @@ export function LoginReg({setUser}) {
     }
     const handleLoginSubmit=async(e)=>{
         e.preventDefault()
+
+        if (loginData.username === '' || loginData.password === '') {
+            alert('All Fields Are Required')
+            return;
+        }
+        if (loginData.username === '' || loginData.password === '') {
+            alert('All Fields Are Required')
+            return;
+        }
         const payload={username:loginData.username,password:loginData.password}
         try{
             const res=await axios.post('http://127.0.0.1:8000/api/token/',payload)
             // jwt token
             localStorage.setItem('access_token',res.data.access);
-            localStorage.setItem('refresh_token',res.data.refresh);
+            localStorage.setItem('refresh_token', res.data.refresh);
+            localStorage.setItem('username',loginData.username)
             alert('Login Successfully')
             setUser(loginData.username)
             navigate('/')
             console.log('login Successfull')
         }catch(error){
-            console.log(error)
+            alert('Wrong Username or Password')
             
 
         }
     }
-    
+    // useEffect(() => {
+    //     const savedUser = localStorage.getItem('username')
+    //         if(savedUser) {
+    //           setUser(savedUser)  
+    //         }
+    // },[])
    
     return (
         <>

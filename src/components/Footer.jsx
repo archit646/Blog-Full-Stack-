@@ -26,8 +26,13 @@ export function Footer() {
                             </ul >
 
                             <span className=" mx-auto ">
-                                <h3 className="text-semibold text-center lg:text-2xl text-xl text-white md:mt-6 ">Where magic and mastery mix, unlocking unimaginable possibilities.</h3>
+                                <h3 className="text-semibold text-center lg:text-2xl text-xl text-white md:mt-6 ">Ideas, insights, and inspiration—right here,Read, reflect, and rediscover.</h3>
                             </span >
+                        </div >
+
+
+                        <div className="flex justify-center items-center py-4 capitalize" >
+                            <h4 className="text-white sm:text-xl font-smibold text-lg" >This Website Designed By Archit Kumar</h4 >
                         </div >
                         {/* < !--Socials --> */}
                         <div>
@@ -46,21 +51,13 @@ export function Footer() {
                                 </li >
                             </ul >
                         </div >
-                        {/* < !--Horizontal line-- > */}
-                    <div className="md:w-[70%] sm:w-[80%] w-[96%] mx-auto flex md:gap-4 gap-2 items-center justify-center" >
-                        <hr className="w-full md:border-2 border-gold" />
-                        
-                        <hr className="w-full md:border-2 border-gold" />
                     </div >
 
 
-                    <div className="flex justify-center items-center py-4 capitalize" >
-                        <h4 className="text-white sm:text-xl font-smibold text-lg" >& copy; 2024 Designed by Sammy - TG</h4 >
-                    </div >
-                    </div >
-                    
+
                 </div >
-            </div>
+                </div>
+            
         </>
     )
 

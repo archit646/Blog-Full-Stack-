@@ -32,7 +32,7 @@ export function Detail() {
     }, [singlePost])
     return (
         <>
-            <div className="main border grid grid-cols-12 h-screen gap-3 overflow-auto">
+            <div className="main border grid grid-cols-12 min-h-screen gap-3 overflow-auto">
                 <div className="container border sm:col-span-10 pt-[70px] flex flex-col p-3 bg-red-300 gap-4 h-full">
                     <div className="bg-gray-600 p-3 flex flex-col items-center rounded-md gap-3">
                         <h1 className="font-bold text-3xl line-clamp-1 break-words text-white p-1">{singlePost.title}</h1>

@@ -3,16 +3,16 @@ import { Sidebar } from "../sidebar";
 import { Main_posts } from "../Main_posts";
 import { useEffect, useState } from "react";
 
-export function Home({ posts, category, recent }) {
+export function Home({ posts, category, recent, token }) {
     
     const [selectedCate, setSelectedCate] = useState('all')
     
     return (
         <>
-            <div className='main bg-green-200 flex flex-col'>
+            <div className='main bg-green-200 flex flex-col min-h-screen'>
                 <div className='trending pt-[70px]'>
                     <h1 className='text-center text-3xl font-bold'>Trending Posts</h1>
-                    <Slider posts={posts}/>
+                    <Slider posts={posts} token={token} />
                 </div>
                 <div className='grid grid-cols-12 gap-3'>
                     <div className='col-span-4 sm:col-span-2 border bg-red-300 p-2'>
