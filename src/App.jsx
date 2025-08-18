@@ -25,7 +25,8 @@ function App() {
   const location=useLocation();
   const [posts,setPosts]=useState([])
   const [recent,setRecent]=useState([])
-  const [category,setCategory]=useState([])
+  const [category, setCategory] = useState([])
+  const [body, setBody] = useState('')
   const [user,setUser]=useState(localStorage.getItem('username') || '')
   
   async function getPosts(){
@@ -84,8 +85,8 @@ function App() {
   <Route path='/' element={<Home token={token} posts={posts} recent={recent} category={category} />}></Route>
   <Route path='about/' element={<About/>}></Route>
   <Route path='contact/' element={<Contact/>}></Route>
-  <Route path='detail/posts/:pk/' element={<Detail/>}></Route>
-  <Route path='newPost/' element={<NewPost token={token} setUser={setUser} user={user} categories={category}/>}></Route>
+  <Route path='detail/posts/:pk/' element={<Detail body={body} />}></Route>
+  <Route path='newPost/' element={<NewPost token={token} setUser={setUser} user={user} categories={category} body={body} setBody={setBody}/>}></Route>
   <Route path='loginReg/' element={<LoginReg setUser={setUser}/>}></Route>
 </Routes>
 <Footer/>

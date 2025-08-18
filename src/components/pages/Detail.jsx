@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { IoPerson } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
-export function Detail() {
+export function Detail({body}) {
     const navigate=useNavigate()
     const { pk } = useParams()
     const [releated, setReleated] = useState([])
@@ -48,7 +48,9 @@ export function Detail() {
                     </div>
                     
                     <img className="w-[80%] h-[30%] object-cover mx-auto" src={singlePost.thumbnail}></img>
-                    <p>{singlePost.content}</p>
+                    <div className="max-w-full">
+                        <div className="ql-editor" dangerouslySetInnerHTML={{ __html: body }} />
+                    </div>
                 </div>
                 <div className="col-span-4 sm:col-span-2 border bg-red-300 p-2 pt-[65px] h-full">
                     <h1 className='text-center text-xl sm:text-2xl font-bold p-3'>Releated Posts</h1>

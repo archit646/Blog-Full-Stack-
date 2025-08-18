@@ -50,7 +50,7 @@ export function Navbar({ user, setUser }) {
                 </div>
                 <div className="auth-btn flex gap-5">
                     {/* <NavLink to={user?'newPost/':'loginReg/'} className="bg-green-600 hover:bg-green-800 text-white font-semibold px-3 py-1 rounded-sm flex items-center"><IoMdAdd className="font-bold text-2xl" />New Post</NavLink> */}
-                    <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold px-3 py-1 rounded-sm flex items-center"><IoMdAdd className="font-bold text-2xl" />New Post</button>
+                    <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold px-3 py-1 rounded-sm flex items-center cursor-pointer"><IoMdAdd className="font-bold text-2xl" />New Post</button>
                     {user
                         ? <div className="flex items-center justify-center gap-[2px]">
                             <h1 className="border flex  items-center justify-center font-bold text-xl p-1 rounded-sm bg-violet-700 text-white">{user}</h1>

@@ -4,12 +4,13 @@ import { Form } from "../form"
 import { useNavigate } from "react-router"
 
 
-export function NewPost({ categories, token,user}) {
+export function NewPost({ categories,token,body,setBody}) {
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
-    const [body, setBody] = useState('')
+    
     const [image, setImage] = useState(null)
     const [category, setCategory] = useState('')
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData();
