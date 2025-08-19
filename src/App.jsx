@@ -85,7 +85,7 @@ function App() {
   <Route path='/' element={<Home token={token} posts={posts} recent={recent} category={category} />}></Route>
   <Route path='about/' element={<About/>}></Route>
   <Route path='contact/' element={<Contact/>}></Route>
-  <Route path='detail/posts/:pk/' element={<Detail body={body} />}></Route>
+        <Route path='detail/posts/:pk/' element={<Detail body={body} token={token} />}></Route>
   <Route path='newPost/' element={<NewPost token={token} setUser={setUser} user={user} categories={category} body={body} setBody={setBody}/>}></Route>
   <Route path='loginReg/' element={<LoginReg setUser={setUser}/>}></Route>
 </Routes>

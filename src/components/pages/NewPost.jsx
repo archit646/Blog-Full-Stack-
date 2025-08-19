@@ -7,7 +7,6 @@ import { useNavigate } from "react-router"
 export function NewPost({ categories,token,body,setBody}) {
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
-    
     const [image, setImage] = useState(null)
     const [category, setCategory] = useState('')
 

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { IoPerson } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
-export function Detail({body}) {
+export function Detail({body,token}) {
     const navigate=useNavigate()
     const { pk } = useParams()
     const [releated, setReleated] = useState([])
@@ -19,7 +19,11 @@ export function Detail({body}) {
         setSinglePost(res.data)
     }
     async function deletePost() {
-        const res = await axios.delete(`http://127.0.0.1:8000/api/posts/${pk}/`)
+        const res = await axios.delete(`http://127.0.0.1:8000/api/posts/${pk}/`, {
+            headers: {
+                Authorization:`Bearer ${token}`
+            }
+        })
         navigate('/')
         console.log('success')
     }

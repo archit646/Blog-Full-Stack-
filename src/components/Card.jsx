@@ -8,8 +8,8 @@ export function Card({item}){
             <div className="content flex flex-col gap-2 p-2">
                 <h1 className="line-clamp-2 text-xl font-semibold">{item.title}</h1>
                 <div className="sub-content flex justify-around">
-                    <span>{item.author?.username}</span>
-                    <span>{item.created_at}</span>
+                    <span className="text-sm">Author-{item.author?.username}</span>
+                    <span className="text-sm">Date-{item.created_at}</span>
                 </div>
             </div>
         </NavLink>

@@ -6,7 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 
 
 
-export function Form({ title, body, image, category, handleSubmit, categories, setTitle, setBody, setImage, setCategory }) {
+export function Form({ title, body, category, handleSubmit, categories, setTitle, setBody,image, setImage, setCategory }) {
     // const [text,setText]=useState('')
     return(
          <div className="border bg-amber-500 rounded-md text-white w-[400px] h-auto p-3 m-auto my-auto flex flex-col gap-3 shadow-xl shadow-black">
