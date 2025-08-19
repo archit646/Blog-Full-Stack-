@@ -3,7 +3,8 @@ import { Sidebar } from "../sidebar";
 import { Main_posts } from "../Main_posts";
 import { useEffect, useState } from "react";
 
-export function Home({ posts, category, recent, token }) {
+export function Home({ posts, category,categories, recent, token }) {
+    // console.log(category)
     
     const [selectedCate, setSelectedCate] = useState('all')
     
@@ -25,7 +26,7 @@ export function Home({ posts, category, recent, token }) {
                         <h1 className='text-center text-2xl sm:text-3xl font-bold p-3'>All Posts</h1>
                         <div className='category flex justify-center gap-3 w-[98%] mx-auto bg-blue-600 p-3'>
                             <h2 className={`${selectedCate==='all'?'bg-green-700':'bg-amber-600 hover:bg-amber-800'} text-white font-semibold rounded-sm px-2 py-1 cursor-pointer`} onClick={()=>setSelectedCate('all')}>All</h2>
-                            {category?.map((item) => {
+                            {categories?.map((item) => {
                                 return <h2 key={item.id} className={`${selectedCate===item.name?'bg-green-700':'bg-amber-600 hover:bg-amber-800'} text-white font-semibold rounded-sm px-2 py-1 cursor-pointer`} onClick={() => setSelectedCate(item.name)}>{item.name}</h2>
                             })}
                         </div>

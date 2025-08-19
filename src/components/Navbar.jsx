@@ -27,9 +27,9 @@ export function Navbar({ user, setUser }) {
             navigate('LoginReg/')
         }
     }
-    useEffect(() => {
-        console.log(user)
-    }, [user])
+    // useEffect(() => {
+    //     console.log(user)
+    // }, [user])
 
     // console.log(username)
     return (

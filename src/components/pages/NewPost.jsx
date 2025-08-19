@@ -1,16 +1,19 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Form } from "../form"
 import { useNavigate } from "react-router"
 
 
-export function NewPost({ categories,token,body,setBody}) {
+export function NewPost({title,setTitle,body,setBody,category,categories,setCategory,image,setImage,token}) {
     const navigate = useNavigate()
-    const [title, setTitle] = useState('')
-    const [image, setImage] = useState(null)
-    const [category, setCategory] = useState('')
+    useEffect(() => {
+        setTitle('')
+        setBody('')
+        setCategory('')
+        setImage(null)
+    },[])
 
-    const handleSubmit = async (e) => {
+    const handlePostSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData();
         formData.append('title', title)
@@ -42,8 +45,18 @@ export function NewPost({ categories,token,body,setBody}) {
     return (
         <>
             <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 to-blue-200 shadow-md shadow-black">
-                <Form setTitle={setTitle} setBody={setBody} setImage={setImage} setCategory={setCategory} title={title} body={body} image={image} category={category} categories={categories} handleSubmit={handleSubmit} />
-
+                <Form setTitle={setTitle}
+                    setBody={setBody}
+                    setImage={setImage}
+                    setCategory={setCategory}
+                    title={title}
+                    body={body}
+                    image={image}
+                    category={category}
+                    categories={categories}
+                    handlePostSubmit={handlePostSubmit}
+                    isUpdate={false}
+                />
             </div>
         </>
     )

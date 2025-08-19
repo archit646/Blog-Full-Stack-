@@ -5,13 +5,14 @@ import { useEffect, useState } from "react"
 import { IoPerson } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export function Detail({body,token}) {
     const navigate=useNavigate()
     const { pk } = useParams()
     const [releated, setReleated] = useState([])
     const [singlePost, setSinglePost] = useState({})
     async function getreleated() {
-        const res = await axios(`http://127.0.0.1:8000/api/posts/${pk}/releated/`)
+        const res = await axios.get(`http://127.0.0.1:8000/api/posts/${pk}/releated/`)
         setReleated(res.data)
     }
     async function getsingle() {
@@ -27,13 +28,14 @@ export function Detail({body,token}) {
         navigate('/')
         console.log('success')
     }
+    
     useEffect(() => {
         getreleated()
         getsingle()
     }, [])
-    useEffect(() => {
-        console.log(singlePost)
-    }, [singlePost])
+    // useEffect(() => {
+    //     console.log(singlePost)
+    // }, [singlePost])
     return (
         <>
             <div className="main border grid grid-cols-12 min-h-screen gap-3 overflow-auto">
@@ -45,7 +47,7 @@ export function Detail({body,token}) {
                             <span className="py-1 px-2 bg-gray-800 flex items-center gap-1"><SlCalender/>Created-<span>{singlePost.created_at}</span></span>
                         </div> 
                         <div className="btn-container text-white flex gap-2">
-                            <button className=" px-2 flex justify-center items-center py-1 bg-green-500 font-semibold rounded-sm cursor-pointer">Update</button>
+                            <NavLink to={`/updatePost/${singlePost.id}`} state={singlePost} className=" px-2 flex justify-center items-center py-1 bg-green-500 font-semibold rounded-sm cursor-pointer">Update</NavLink>
                             <button onClick={deletePost} className=" px-2 flex justify-center items-center py-1 bg-red-500 font-semibold rounded-sm cursor-pointer">Delete</button>
 
                         </div>

@@ -1,0 +1,85 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { Form } from "../form"
+import { useNavigate } from "react-router"
+import { useLocation } from "react-router"
+
+
+export function UpdatePost({ title, setTitle, body, setBody, category, setCategory, categories, image, setImage, token }) {
+    const location = useLocation()
+    const prevPost = location.state
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        setTitle(prevPost.title)
+        setBody(prevPost.content)
+        setCategory(prevPost.category)
+        // setImage(null)
+    }, [prevPost])
+
+    const handleUpdateSubmit = async (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        // formData.append('id', prevPost.id)
+        formData.append('title', title)
+        formData.append('category', category)
+        formData.append('content', body)
+        if (image instanceof File) {
+            formData.append('thumbnail',image)
+        }
+
+        try {
+            const res = await axios.put(`http://127.0.0.1:8000/api/posts/${prevPost.id}/`, formData, {
+                headers: {
+                    // 'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                }
+
+            })
+            navigate('/')
+            console.log('success')
+        } catch (error) {
+            console.log(error)
+        }
+
+
+    }
+
+
+    return (
+        <>
+            <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 to-blue-200 shadow-md shadow-black">
+                <Form
+                    setTitle={setTitle}
+                    setBody={setBody}
+                    setImage={setImage}
+                    setCategory={setCategory}
+                    categories={categories}
+                    title={title}
+                    body={body}
+                    category={category}
+                    imageName={prevPost.thumbnail.split('/').pop()}
+                    handleUpdateSubmit={handleUpdateSubmit}
+                    prevPost={prevPost}
+                    isUpdate={true}
+
+
+                />
+
+            </div>
+        </>
+    )
+
+}
+
+
+// import React from 'react'
+
+// export default function UpdatePost() {
+//   return (
+//     <div className='pt-[70px] min-h-screen'>
+//       <h1>This is Update</h1>
+//     </div>
+//   )
+// }

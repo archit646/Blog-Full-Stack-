@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { Navbar } from './components/Navbar';
-import {Home} from './components/pages/Home';
+import { Home } from './components/pages/Home';
 import { About } from './components/pages/About';
 import { Contact } from './components/pages/Contact';
 import { Slider } from './components/Slider';
@@ -16,80 +16,85 @@ import { Footer } from './components/Footer';
 import { LoginReg } from './components/pages/LoginReg';
 import { useLocation } from 'react-router';
 import { Navigate } from 'react-router';
+import { UpdatePost } from './components/pages/UpdatePost';
 
 // import './App.css'
 
 function App() {
-  const token=localStorage.getItem('access_token')
+  const token = localStorage.getItem('access_token')
 
-  const location=useLocation();
-  const [posts,setPosts]=useState([])
-  const [recent,setRecent]=useState([])
-  const [category, setCategory] = useState([])
+  const location = useLocation();
+  const [posts, setPosts] = useState([])
+  const [recent, setRecent] = useState([])
+  const [title, setTitle] = useState('')
+  const [image, setImage] = useState(null)
+  const [category, setCategory] = useState('')
+  const [categories, setCategories] = useState([])
   const [body, setBody] = useState('')
-  const [user,setUser]=useState(localStorage.getItem('username') || '')
-  
-  async function getPosts(){
-    try{
+  const [user, setUser] = useState(localStorage.getItem('username') || '')
+
+  async function getPosts() {
+    try {
       let res = await axios.get('http://127.0.0.1:8000/api/posts/')
-    setPosts(res.data)
+      setPosts(res.data)
     }
-    catch(error){
+    catch (error) {
       console.log(error)
 
     }
   }
 
-  async function getRecent(){
-    try{
-    let res=await axios.get('http://127.0.0.1:8000/api/posts/recent')
-    setRecent(res.data)
+  async function getRecent() {
+    try {
+      let res = await axios.get('http://127.0.0.1:8000/api/posts/recent')
+      setRecent(res.data)
     }
-    catch(error){
+    catch (error) {
       console.log(error)
 
     }
   }
 
-  
 
-  async function getCate(){
-    try{
-    let res=await axios.get('http://127.0.0.1:8000/api/categories/')
-      setCategory(res.data)
+
+  async function getCate() {
+    try {
+      let res = await axios.get('http://127.0.0.1:8000/api/categories/')
+      setCategories(res.data)
 
     }
-    catch(error){
+    catch (error) {
       console.log(error)
 
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     getPosts()
     getCate()
     getRecent()
     // console.log(category)
-    
-  },[location])
 
-   useEffect(()=>{
-    console.log(category)
-    
-  },[])
+  }, [location])
+
+  // useEffect(() => {
+  //   console.log(category)
+
+  // }, [])
 
 
   return (
     <>
-<Navbar user={user} setUser={setUser}/>
-<Routes>
-  <Route path='/' element={<Home token={token} posts={posts} recent={recent} category={category} />}></Route>
-  <Route path='about/' element={<About/>}></Route>
-  <Route path='contact/' element={<Contact/>}></Route>
+      <Navbar user={user} setUser={setUser} />
+      <Routes>
+        <Route path='/' element={<Home token={token} posts={posts} recent={recent} categories={categories} setCategories={setCategories} category={category} />}></Route>
+        <Route path='about/' element={<About />}></Route>
+        <Route path='contact/' element={<Contact />}></Route>
         <Route path='detail/posts/:pk/' element={<Detail body={body} token={token} />}></Route>
-  <Route path='newPost/' element={<NewPost token={token} setUser={setUser} user={user} categories={category} body={body} setBody={setBody}/>}></Route>
-  <Route path='loginReg/' element={<LoginReg setUser={setUser}/>}></Route>
-</Routes>
-<Footer/>
+        <Route path='newPost/' element={<NewPost token={token} setUser={setUser} user={user} category={category} body={body} setBody={setBody} categories={categories} setCategories={setCategories}  setCategory={setCategory} title={title} image={image} setTitle={setTitle} setImage={setImage} />}></Route>
+        <Route path='loginReg/' element={<LoginReg setUser={setUser} />}></Route>
+        <Route path='UpdatePost/:pk' element={<UpdatePost token={token} setUser={setUser} user={user} category={category} categories={categories} setCategories={setCategories} body={body} setBody={setBody}  setCategory={setCategory} title={title} image={image} setTitle={setTitle} setImage={setImage}  />}></Route>
+      </Routes>
+      <Footer />
     </>
 
   )
