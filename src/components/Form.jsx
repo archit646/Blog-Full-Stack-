@@ -1,5 +1,5 @@
 // import { useEffect, useState } from 'react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -7,13 +7,24 @@ import 'react-quill/dist/quill.snow.css';
 
 
 export function Form({ title, body, category, categories, handlePostSubmit, handleUpdateSubmit, setTitle, setBody, image, setImage, setCategory, isUpdate, imageName }) {
-    console.log(imageName)
+    // console.log(image.name)
     
     // console.log(categories)
 
     // const [text,setText]=useState('')
     const quillRef = useRef(null);
+    const [fileName, setFileName] = useState(imageName)
 
+    const handleFileChange = (e) => {
+        if(e.target.files && e.target.files.length > 0) {
+            setFileName(e.target.files[0].name)
+            setImage(e.target.files[0]);
+        }
+        else {
+            setFileName('No File Chosen')
+        }
+    }
+    // console.log(body)
     return (
         <div className="border bg-amber-500 rounded-md text-white w-[400px] h-auto p-3 m-auto my-auto flex flex-col gap-3 shadow-xl shadow-black">
             <h1 className="text-center font-bold w-[80%] mx-auto bg-blue-800 p-2 text-white rounded-2xl">{isUpdate ? 'Update Post' : 'Create New Post'}</h1>
@@ -33,14 +44,14 @@ export function Form({ title, body, category, categories, handlePostSubmit, hand
                 <div className="w-full max-h-[30vh] overflow-auto" >
                     <span className="font-semibold">Body</span>
                     {/* <textarea className="w-full border p-1 bg-gray-500" placeholder="Body" value={body} onChange={(e) => setBody(e.target.value)}></textarea> */}
-                    <ReactQuill ref={quillRef} placeholder='Write Amazing Somthing...' className='bg-white text-black h-full' theme="snow" value={body} onChange={setBody} />
+                    <ReactQuill ref={quillRef} placeholder='Write Amazing Somthing...' className='bg-white text-black h-full' theme="snow" value={body || ''} onChange={setBody} />
                 </div>
                 <div className="flex flex-col w-full ">
                     <span className="font-semibold">Thumbnail</span>
-                    {/* <div className='flex justify-between items-center gap-1'> */}
-                        <input className={`bg-gray-500 p-1 px-2 w-full  text-white font-semibold cursor-pointer`} type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])}></input>
-                        {/* <label className={`${isUpdate ? 'block' : 'hidden'} border text-sm  overflow-hidden h-[30px] p-1 line-clamp-1`}>{}</label> */}
-                    {/* </div> */}
+                    <div className='flex justify-between items-center gap-1'>
+                        <input className={`bg-gray-500 p-1 px-2 w-full  text-white font-semibold cursor-pointer`} type="file" accept="image/*" onChange={handleFileChange}></input>
+                        <label className={`${ fileName?'block':'hidden'} border text-sm  overflow-hidden h-[30px] p-1 line-clamp-1`}>{fileName}</label>
+                    </div>
                 </div>
                 <button type="submit" className="w-[30%] border rounded-sm font-semibold bg-red-700 hover:bg-red-900 text-white cursor-pointer">{isUpdate ? 'Update' : 'Post'}</button>
 

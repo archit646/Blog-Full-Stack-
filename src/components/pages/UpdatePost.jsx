@@ -59,7 +59,7 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
                     title={title}
                     body={body}
                     category={category}
-                    imageName={prevPost.thumbnail.split('/').pop()}
+                    imageName={prevPost?.thumbnail.split('/').pop()}
                     handleUpdateSubmit={handleUpdateSubmit}
                     prevPost={prevPost}
                     isUpdate={true}

@@ -6,7 +6,8 @@ import { IoPerson } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-export function Detail({body,token}) {
+
+export function Detail({token}) {
     const navigate=useNavigate()
     const { pk } = useParams()
     const [releated, setReleated] = useState([])
@@ -54,8 +55,8 @@ export function Detail({body,token}) {
                     </div>
                     
                     <img className="w-[80%] h-[30%] object-cover mx-auto" src={singlePost.thumbnail}></img>
-                    <div className="max-w-full">
-                        <div className="ql-editor" dangerouslySetInnerHTML={{ __html: body }} />
+                    <div className="max-w-full" dangerouslySetInnerHTML={{ __html: singlePost.content }}>
+                        
                     </div>
                 </div>
                 <div className="col-span-4 sm:col-span-2 border bg-red-300 p-2 pt-[65px] h-full">

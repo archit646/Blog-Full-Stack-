@@ -36,7 +36,9 @@ export function NewPost({title,setTitle,body,setBody,category,categories,setCate
 
         }
         catch (error) {
-            console.log('Error:', error)
+            alert('Your Token has Expired Please Login Again')
+            navigate('/LoginReg')
+            // console.log('Error:', error)
         }
 
 
