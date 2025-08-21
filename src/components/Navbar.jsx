@@ -27,16 +27,12 @@ export function Navbar({ user, setUser }) {
             navigate('LoginReg/')
         }
     }
-    // useEffect(() => {
-    //     console.log(user)
-    // }, [user])
-
-    // console.log(username)
+    
     return (
         <>
             <div className="navbar fixed w-full z-50 border flex items-center justify-between sm:justify-around  bg-amber-400 top-0">
 
-                <img className="logo w-[4.5%] h-[6%] scale-[130%]  object-contain" src="https://cdn-icons-png.flaticon.com/512/10026/10026257.png" alt="logo" />
+                <img className="logo  max-w-[90px] max-h-[90px] scale-[230%]" src="/mylogo.png" alt="logo" />
 
                 <div className="links hidden sm:block">
                     <ul className="flex gap-3">

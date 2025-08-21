@@ -6,8 +6,8 @@ export function Footer() {
 
             <div className="relative">
                 <div className="w-full h-auto bottom-0 bg-black grid grid-cols-12">
-                    <div className="col-span-4  flex items-center justify-center">
-                        <img className="logo w-[60%] h-[60%]  object-contain scale-150" src="https://cdn-icons-png.flaticon.com/512/10026/10026257.png" alt="logo" />
+                    <div className="col-span-4  flex items-center justify-center overflow-hidden ">
+                        <img className="logo invert max-w-[200px] max-h-[200px] scale-[230%]" src="/mylogo.png" alt="logo" />
                     </div>
                     <div className="h-fit col-span-8 mx-auto md:py-4 py-4 flex  flex-col justify-between items-center">
 
@@ -56,8 +56,8 @@ export function Footer() {
 
 
                 </div >
-                </div>
-            
+            </div>
+
         </>
     )
 
