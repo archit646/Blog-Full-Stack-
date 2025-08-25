@@ -35,7 +35,7 @@ function App() {
 
   async function getPosts() {
     try {
-      let res = await axios.get('http://myapp00.pythonanywhere.com/api/posts/')
+      let res = await axios.get('https://myapp00.pythonanywhere.com/api/posts/')
       setPosts(res.data)
     }
     catch (error) {

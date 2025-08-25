@@ -14,15 +14,15 @@ export function Detail({ token }) {
     const [singlePost, setSinglePost] = useState({})
     const [comment, setComment] = useState('')
     async function getreleated() {
-        const res = await axios.get(`http://myapp00.pythonanywhere.com/api/posts/${pk}/releated/`)
+        const res = await axios.get(`https://myapp00.pythonanywhere.com/api/posts/${pk}/releated/`)
         setReleated(res.data)
     }
     async function getsingle() {
-        const res = await axios.get(`http://myapp00.pythonanywhere.com/api/posts/${pk}/`)
+        const res = await axios.get(`https://myapp00.pythonanywhere.com/api/posts/${pk}/`)
         setSinglePost(res.data)
     }
     async function deletePost() {
-        const res = await axios.delete(`http://myapp00.pythonanywhere.com/api/posts/${pk}/`, {
+        const res = await axios.delete(`https://myapp00.pythonanywhere.com/api/posts/${pk}/`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -33,7 +33,7 @@ export function Detail({ token }) {
     async function commentPost(e) {
         e.preventDefault()
         try {
-            const res = await axios.post('http://myapp00.pythonanywhere.com/api/comments/', {
+            const res = await axios.post('https://myapp00.pythonanywhere.com/api/comments/', {
                 content: comment,
                 post: singlePost.id
             }, {

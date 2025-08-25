@@ -30,7 +30,7 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
         }
 
         try {
-            const res = await axios.put(`http://myapp00.pythonanywhere.com/api/posts/${prevPost.id}/`, formData, {
+            const res = await axios.put(`https://myapp00.pythonanywhere.com/api/posts/${prevPost.id}/`, formData, {
                 headers: {
                     // 'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`
