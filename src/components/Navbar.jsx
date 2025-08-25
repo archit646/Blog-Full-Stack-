@@ -64,11 +64,11 @@ export function Navbar({ user, setUser }) {
                 </div>
             </div>
             {/* mobile menu  */}
-            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden z-60 absolute w-full`}>
+            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden absolute w-full`}>
                 <div className="bg-amber-700 text-white font-semibold p-1 flex flex-col items-center">
-                    <div className="w-full border"><NavLink to="/" onClick={()=>setMenu(false)} className=" p-[10px]">Home</NavLink></div>
-                    <div className="w-full border"><NavLink to='/about' onClick={()=>setMenu(false)} className=" p-[10px]">About</NavLink></div>
-                    <div className="w-full border"><NavLink to='/contact' onClick={()=>setMenu(false)} className=" p-[10px]">Contact</NavLink></div>
+                    <NavLink to="/" className="w-full border"><div onClick={()=>setMenu(false)} className=" p-[10px]">Home</div></NavLink>
+                    <NavLink to='/about' className="w-full border"><div onClick={()=>setMenu(false)} className=" p-[10px]">About</div></NavLink>
+                    <NavLink to='/contact' className="w-full border"><div onClick={()=>setMenu(false)} className=" p-[10px]">Contact</div></NavLink>
                 </div>
             </div>
 </div>
