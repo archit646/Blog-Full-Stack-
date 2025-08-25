@@ -107,7 +107,7 @@ export function LoginReg({setUser}) {
                                     <span className=" w-full font-semibold">Password</span>
                                     <input name="password" value={loginData.password} type="password" placeholder="Password" className="border w-full p-2 rounded-md" onChange={handleLoginChange}></input>
                                 </div>
-                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer">Login</button>
+                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">Login</button>
 
 
                             </form>
