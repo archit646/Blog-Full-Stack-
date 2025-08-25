@@ -22,13 +22,19 @@ export function Detail({ token }) {
         setSinglePost(res.data)
     }
     async function deletePost() {
-        const res = await axios.delete(`https://myapp00.pythonanywhere.com/api/posts/${pk}/`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        navigate('/')
-        console.log('success')
+        try {
+            const res = await axios.delete(`https://myapp00.pythonanywhere.com/api/posts/${pk}/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            navigate('/')
+            console.log('success')
+        } catch (error) {
+            alert('Please Login First')
+            navigate('/loginReg')
+        }
+       
     }
     async function commentPost(e) {
         e.preventDefault()
@@ -54,7 +60,7 @@ export function Detail({ token }) {
         getreleated()
         getsingle()
     }, [])
-   
+
     return (
         <>
             <div className="main border grid grid-cols-12 min-h-screen gap-3 overflow-auto">
