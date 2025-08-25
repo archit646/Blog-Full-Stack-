@@ -15,38 +15,38 @@ export function Navbar({ user, setUser }) {
         localStorage.removeItem('username')
         setUser('')
         // localStorage.removeItem('username')
-        navigate('loginReg/')
+        navigate('/loginReg')
 
     }
     const handle = () => {
         if (user) {
-            navigate('newPost/')
+            navigate('/newPost')
         }
         else {
             alert('Please Login First')
-            navigate('LoginReg/')
+            navigate('/loginReg')
         }
     }
 
     return (
         <>
-            <div className="navbar fixed w-full z-50 flex items-center justify-between sm:justify-around bg-amber-400  top-0">
+            <div className="navbar  fixed w-screen z-50 flex items-center justify-around sm:justify-around bg-amber-400 top-0">
 
                 <img className="logo max-w-[60px] max-h-[60px] sm:max-w-[90px] sm:max-h-[90px] scale-[230%] sm:scale-[230%]" src="/mylogo.png" alt="logo" />
 
                 <div className="links hidden sm:block">
                     <ul className="flex gap-3">
 
-                        <NavLink to='/' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Home</NavLink>
-                        <NavLink to='about/' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">About</NavLink>
-                        <NavLink to='contact/' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Contact</NavLink>
+                        <li><NavLink to='/' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Home</NavLink></li>
+                        <li><NavLink to='/about' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">About</NavLink></li>
+                        <li><NavLink to='/contact' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Contact</NavLink></li>
 
                     </ul>
 
                 </div>
                 <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold sm:hidden text-sm px-3 py-1 flex items-center justify-center  rounded-sm  cursor-pointer"><IoMdAdd className="font-bold text-2xl" />New Post</button>
 
-                <div className="auth-btn hidden sm:flex gap-5 ">
+                <div className="auth-btn sm:flex gap-5 hidden">
                     <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold p-1  text-sm sm:px-3 sm:py-1  rounded-sm flex items-center justify-center cursor-pointer"><IoMdAdd className="font-bold text-2xl" />New Post</button>
 
                     {user
@@ -54,24 +54,26 @@ export function Navbar({ user, setUser }) {
                             <h1 className="border flex  items-center justify-center font-bold text-xl p-1 rounded-sm bg-violet-700 text-white">{user}</h1>
                             <button className="bg-pink-700 hover:bg-pink-900 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer" onClick={handleLogout}>Logout</button>
                         </div>
-                        : <NavLink to='loginReg/' className="bg-pink-700 hover:bg-pink-900 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer">Login/Register</NavLink>
+                        : <NavLink to='/loginReg' className="bg-pink-700 hover:bg-pink-900 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer">Login/Register</NavLink>
                     }
 
 
                 </div>
-                <div className="toggle-container sm:hidden">
-                    <button onClick={() => setMenu(!menu)} >{menu ? <RxCross2 className="text-3xl font-semibold text-white" /> : <FaBars className="text-white font-semibold text-2xl" />}</button>
+                <div className="toggle-container block sm:hidden">
+                    <button className="" onClick={() => setMenu(!menu)} >{menu ? <RxCross2 className="text-3xl font-semibold text-white" /> : <FaBars className="text-white font-semibold text-2xl" />}</button>
                 </div>
             </div>
-
             {/* mobile menu  */}
-            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[70px]`}>
-                <ul className="bg-amber-700 text-white font-semibold p-1 ">
-                    <NavLink to='/' className="border p-2">Home</NavLink>
-                    <NavLink to='about/' className="border p-2">About</NavLink>
-                    <NavLink to='contact/' className="border p-2">Contact</NavLink>
+            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px]`}>
+                <ul className="bg-amber-700 text-white font-semibold p-1 flex flex-col">
+                    
+                    <li className="w-full border"><NavLink to='/' className=" p-2">Home</NavLink></li>
+                    <li className="w-full border"><NavLink to='/about' className=" p-2">About</NavLink></li>
+                    <li className="w-full border"><NavLink to='/contact' className=" p-2">Contact</NavLink></li>
                 </ul>
             </div>
+
+            
         </>
 
     )
