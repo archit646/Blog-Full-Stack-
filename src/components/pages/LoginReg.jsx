@@ -43,8 +43,8 @@ export function LoginReg({setUser}) {
             password:registerData.password
         }
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/register/' || 'http://myapp00.pythonanywhere.com/api/register/', payload)
-            // setRegisterData({ 'username': '', 'email': '', 'password': '' })
+            const res = await axios.post('http://myapp00.pythonanywhere.com/api/register/', payload)
+            
             console.log(res.data)
             alert('Registerd Successfully')
             setRegisterData({ 'username': '', 'email': '', 'password': '' , 'confirm_password':'' , 'check':false })
@@ -67,7 +67,7 @@ export function LoginReg({setUser}) {
         }
         const payload={username:loginData.username,password:loginData.password}
         try{
-            const res=await axios.post('http://127.0.0.1:8000/api/token/' || 'http://myapp00.pythonanywhere.com/api/token/',payload)
+            const res=await axios.post('http://myapp00.pythonanywhere.com/api/token/',payload)
             // jwt token
             localStorage.setItem('access_token',res.data.access);
             localStorage.setItem('refresh_token', res.data.refresh);
@@ -82,12 +82,7 @@ export function LoginReg({setUser}) {
 
         }
     }
-    // useEffect(() => {
-    //     const savedUser = localStorage.getItem('username')
-    //         if(savedUser) {
-    //           setUser(savedUser)  
-    //         }
-    // },[])
+   
    
     return (
         <>

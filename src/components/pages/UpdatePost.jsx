@@ -30,7 +30,7 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
         }
 
         try {
-            const res = await axios.put(`http://127.0.0.1:8000/api/posts/${prevPost.id}/` || `http://myapp00.pythonanywhere.com/api/posts/${prevPost.id}/`, formData, {
+            const res = await axios.put(`http://myapp00.pythonanywhere.com/api/posts/${prevPost.id}/`, formData, {
                 headers: {
                     // 'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`
@@ -74,12 +74,3 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
 }
 
 
-// import React from 'react'
-
-// export default function UpdatePost() {
-//   return (
-//     <div className='pt-[70px] min-h-screen'>
-//       <h1>This is Update</h1>
-//     </div>
-//   )
-// }

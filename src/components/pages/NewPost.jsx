@@ -24,7 +24,7 @@ export function NewPost({title,setTitle,body,setBody,category,categories,setCate
         }
         try {
             
-            const res = await axios.post('http://127.0.0.1:8000/api/posts/' || 'http://myapp00.pythonanywhere.com/api/posts/', formData, {
+            const res = await axios.post('http://myapp00.pythonanywhere.com/api/posts/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`

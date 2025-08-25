@@ -4,7 +4,7 @@ import { Main_posts } from "../Main_posts";
 import { useEffect, useState } from "react";
 
 export function Home({ posts, category,categories, recent, token }) {
-    // console.log(category)
+    
     
     const [selectedCate, setSelectedCate] = useState('all')
     
