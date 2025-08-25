@@ -31,8 +31,7 @@ export function Detail({ token }) {
             navigate('/')
             console.log('success')
         } catch (error) {
-            alert('Please Login First')
-            navigate('/loginReg')
+            alert('Sorry,You Cannot Delete This Post')
         }
        
     }

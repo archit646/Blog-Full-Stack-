@@ -40,8 +40,8 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
             navigate('/')
             console.log('success')
         } catch (error) {
-            alert('Please Login First')
-            navigate('/loginReg')
+            alert('Sorry You Cannot Update This Post')
+            
         }
 
 
