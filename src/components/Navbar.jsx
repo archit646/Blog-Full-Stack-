@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router'
 import { FaBars } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdAdd } from "react-icons/io";
@@ -29,19 +29,19 @@ export function Navbar({ user, setUser }) {
     }
 
     return (
-        <>
-            <div className="navbar  fixed w-screen z-50 flex items-center justify-around sm:justify-around bg-amber-400 top-0">
+        <div className="relative w-screen">
+            <div className="navbar fixed w-full flex items-center justify-around sm:justify-around bg-amber-400 top-0 z-50">
 
                 <img className="logo max-w-[60px] max-h-[60px] sm:max-w-[90px] sm:max-h-[90px] scale-[230%] sm:scale-[230%]" src="/mylogo.png" alt="logo" />
 
                 <div className="links hidden sm:block">
-                    <ul className="flex gap-3">
+                    <div className="flex gap-3">
 
-                        <li><NavLink to='/' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Home</NavLink></li>
-                        <li><NavLink to='/about' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">About</NavLink></li>
-                        <li><NavLink to='/contact' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Contact</NavLink></li>
+                        <div><NavLink to='/' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Home</NavLink></div>
+                        <div><NavLink to='/about' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">About</NavLink></div>
+                        <div><NavLink to='/contact' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Contact</NavLink></div>
 
-                    </ul>
+                    </div>
 
                 </div>
                 <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold sm:hidden text-sm px-3 py-1 flex items-center justify-center  rounded-sm  cursor-pointer"><IoMdAdd className="font-bold text-2xl" />New Post</button>
@@ -64,17 +64,16 @@ export function Navbar({ user, setUser }) {
                 </div>
             </div>
             {/* mobile menu  */}
-            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px]`}>
-                <ul className="bg-amber-700 text-white font-semibold p-1 flex flex-col">
-                    
-                    <li className="w-full border"><NavLink to='/' className=" p-2">Home</NavLink></li>
-                    <li className="w-full border"><NavLink to='/about' className=" p-2">About</NavLink></li>
-                    <li className="w-full border"><NavLink to='/contact' className=" p-2">Contact</NavLink></li>
-                </ul>
+            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden z-60 absolute w-full`}>
+                <div className="bg-amber-700 text-white font-semibold p-1 flex flex-col items-center">
+                    <div className="w-full border"><NavLink to="/" onClick={()=>setMenu(false)} className=" p-2">Home</NavLink></div>
+                    <div className="w-full border"><NavLink to='/about' onClick={()=>setMenu(false)} className=" p-2">About</NavLink></div>
+                    <div className="w-full border"><NavLink to='/contact' onClick={()=>setMenu(false)} className=" p-2">Contact</NavLink></div>
+                </div>
             </div>
-
+</div>
             
-        </>
+        
 
     )
 }
