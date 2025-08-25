@@ -50,7 +50,7 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
 
     return (
         <>
-            <div className="flex items-center justify-center sm:py-[5%] py-[15%] bg-gradient-to-br from-blue-100 to-blue-200 shadow-md shadow-black">
+            <div className="flex sm:pt-[4.5%] pt-[8%] min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 shadow-md">
                 <Form
                     setTitle={setTitle}
                     setBody={setBody}

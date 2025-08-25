@@ -27,12 +27,12 @@ export function Navbar({ user, setUser }) {
             navigate('LoginReg/')
         }
     }
-    
+
     return (
         <>
-            <div className="navbar fixed w-full z-50 border flex items-center justify-between sm:justify-around  bg-amber-400 top-0">
+            <div className="navbar fixed w-full z-50 flex items-center justify-between sm:justify-around bg-amber-400  top-0">
 
-                <img className="logo  max-w-[90px] max-h-[90px] scale-[230%]" src="/mylogo.png" alt="logo" />
+                <img className="logo max-w-[60px] max-h-[60px] sm:max-w-[90px] sm:max-h-[90px] scale-[230%] sm:scale-[230%]" src="/mylogo.png" alt="logo" />
 
                 <div className="links hidden sm:block">
                     <ul className="flex gap-3">
@@ -44,9 +44,11 @@ export function Navbar({ user, setUser }) {
                     </ul>
 
                 </div>
-                <div className="auth-btn flex gap-5">
-                    {/* <NavLink to={user?'newPost/':'loginReg/'} className="bg-green-600 hover:bg-green-800 text-white font-semibold px-3 py-1 rounded-sm flex items-center"><IoMdAdd className="font-bold text-2xl" />New Post</NavLink> */}
-                    <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold px-3 py-1 rounded-sm flex items-center cursor-pointer"><IoMdAdd className="font-bold text-2xl" />New Post</button>
+                <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold sm:hidden text-sm px-3 py-1 flex items-center justify-center  rounded-sm  cursor-pointer"><IoMdAdd className="font-bold text-2xl" />New Post</button>
+
+                <div className="auth-btn hidden sm:flex gap-5 ">
+                    <button onClick={handle} className="bg-green-600 hover:bg-green-800 text-white font-semibold p-1  text-sm sm:px-3 sm:py-1  rounded-sm flex items-center justify-center cursor-pointer"><IoMdAdd className="font-bold text-2xl" />New Post</button>
+
                     {user
                         ? <div className="flex items-center justify-center gap-[2px]">
                             <h1 className="border flex  items-center justify-center font-bold text-xl p-1 rounded-sm bg-violet-700 text-white">{user}</h1>
