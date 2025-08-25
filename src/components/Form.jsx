@@ -26,7 +26,7 @@ export function Form({ title, body, category, categories, handlePostSubmit, hand
     }
     // console.log(body)
     return (
-        <div className="border bg-amber-500 rounded-md text-white w-[400px] h-auto p-3 m-auto my-auto flex flex-col gap-3 shadow-xl shadow-black">
+        <div className="border bg-amber-500 rounded-md text-white w-[80%] h-auto p-3  flex flex-col gap-3 shadow-xl shadow-black">
             <h1 className="text-center font-bold w-[80%] mx-auto bg-blue-800 p-2 text-white rounded-2xl">{isUpdate ? 'Update Post' : 'Create New Post'}</h1>
             <form onSubmit={isUpdate ? handleUpdateSubmit : handlePostSubmit} className="border flex flex-col items-center h-auto w-full gap-4 bg-blue-800 p-4 rounded-2xl">
                 <div className="w-full">
@@ -41,10 +41,10 @@ export function Form({ title, body, category, categories, handlePostSubmit, hand
                         })}
                     </select>
                 </div>
-                <div className="w-full max-h-[30vh] overflow-auto" >
+                <div className="w-full overflow-auto" >
                     <span className="font-semibold">Body</span>
                     {/* <textarea className="w-full border p-1 bg-gray-500" placeholder="Body" value={body} onChange={(e) => setBody(e.target.value)}></textarea> */}
-                    <ReactQuill ref={quillRef} placeholder='Write Amazing Somthing...' className='bg-white text-black h-full' theme="snow" value={body || ''} onChange={setBody} />
+                    <ReactQuill ref={quillRef} placeholder='Write Amazing Somthing...' className='bg-white text-black h-[300px] overflow-hidden' theme="snow" value={body || ''} onChange={setBody} />
                 </div>
                 <div className="flex flex-col w-full ">
                     <span className="font-semibold">Thumbnail</span>

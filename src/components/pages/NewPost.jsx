@@ -46,7 +46,7 @@ export function NewPost({title,setTitle,body,setBody,category,categories,setCate
     }
     return (
         <>
-            <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 to-blue-200 shadow-md shadow-black">
+            <div className="flex sm:py-[5%] py-[15%] items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 shadow-md shadow-black">
                 <Form setTitle={setTitle}
                     setBody={setBody}
                     setImage={setImage}
