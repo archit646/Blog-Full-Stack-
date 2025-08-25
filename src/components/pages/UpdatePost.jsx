@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Form } from "../form"
+import { Form } from "../Form"
 import { useNavigate } from "react-router"
 import { useLocation } from "react-router"
 
