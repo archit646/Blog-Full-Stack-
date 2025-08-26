@@ -7,9 +7,9 @@ export function Card({item}){
             <img className="object-cover h-[65%] w-full rounded-t-sm" src={item.thumbnail} alt="image" />
             <div className="content flex flex-col gap-2 p-2">
                 <h1 className="line-clamp-2 text-xl font-semibold">{item.title}</h1>
-                <div className="sub-content flex justify-around">
-                    <span className="text-sm">Author-{item.author?.username}</span>
-                    <span className="text-sm">Date-{item.created_at}</span>
+                <div className="sub-content flex text-[10px] justify-around">
+                    <span className="">Author-{item.author?.username}</span>
+                    <span className="">Published-{item.created_at}</span>
                 </div>
             </div>
         </NavLink>

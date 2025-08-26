@@ -64,7 +64,7 @@ export function Navbar({ user, setUser }) {
                 </div>
             </div>
             {/* mobile menu  */}
-            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden absolute w-full`}>
+            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden transition-all duration-300 ease-in-out absolute w-full z-40`}>
                 <div className="bg-amber-700 text-white font-semibold p-1 flex flex-col items-center">
                     <NavLink to="/" className="w-full border"><div onClick={()=>setMenu(false)} className=" p-[10px]">Home</div></NavLink>
                     <NavLink to='/about' className="w-full border"><div onClick={()=>setMenu(false)} className=" p-[10px]">About</div></NavLink>
