@@ -62,8 +62,8 @@ export function Detail({ token }) {
 
     return (
         <>
-            <div className="main  grid grid-cols-12 min-h-screen min-w-screen gap-3 overflow-auto">
-                <div className="container  sm:col-span-10 pt-[70px] flex flex-col p-3  gap-4 h-full">
+            <div className="main  grid grid-cols-12 min-h-screen gap-3 bg-amber-600 overflow-auto">
+                <div className="left-box bg-white sm:col-span-10 pt-[70px] flex flex-col p-3  gap-4 h-full">
                     <div className="bg-gray-600 p-3 flex flex-col items-center rounded-md gap-3">
                         <h1 className="font-bold text-3xl line-clamp-1 break-words text-white p-1">{singlePost.title}</h1>
                         <div className="flex justify-between gap-3 text-white">
@@ -101,7 +101,7 @@ export function Detail({ token }) {
                         })}
                     </div >
                 </div>
-                <div className="col-span-4 sm:col-span-2 bg-gray-300  p-2 pt-[65px] h-full">
+                <div className="right-box col-span-4 sm:col-span-2 bg-white  p-2 pt-[65px] h-full">
                     <h1 className='text-center text-xl sm:text-2xl font-bold p-3'>Releated Posts</h1>
                     <Sidebar posts={releated} />
 
