@@ -33,7 +33,7 @@ export function Slider({ posts,token}) {
     }, [])
     return (
         <>
-            <div className="relative overflow-hidden px-6 py-3 border w-full">
+            <div className="relative overflow-hidden px-6 py-3 w-full">
                 <div className={'post-container overflow-hidden scroll-smooth flex justify-center gap-4 py-3'}>
                     {trending?.map((item) =>
                         <Card key={item.id} item={item} />
@@ -41,8 +41,8 @@ export function Slider({ posts,token}) {
 
 
                 </div>
-                <button onClick={prevbtn} className="size-[50px] absolute border rounded-full top-[43%] left-[0.1%]  text-black font-semibold bg-white/30 backdrop-blur-md flex items-center justify-center"><FaAngleLeft  className="text-2xl font-bold"/></button>
-                <button onClick={nextbtn} className="size-[50px] absolute border rounded-full top-[43%] right-[0.6%] text-black font-semibold bg-white/30 backdrop-blur-md flex items-center justify-center"><FaAngleRight className="text-2xl font-bold"/></button>
+                <button onClick={prevbtn} className="size-[50px] absolute border rounded-full top-[43%] left-[0.1%]  text-black font-semibold bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/10 "><FaAngleLeft  className="text-2xl font-bold"/></button>
+                <button onClick={nextbtn} className="size-[50px] absolute border rounded-full top-[43%] right-[0.1%] text-black font-semibold bg-white/30 backdrop-blur-md flex items-center justify-center hover:bg-white/10 "><FaAngleRight className="text-2xl font-bold"/></button>
             </div>
         </>
     )

@@ -30,7 +30,7 @@ export function Navbar({ user, setUser }) {
             navigate('/loginReg')
         }
     }
-    console.log(log)
+  
 
     return (
         <div className="relative w-full">
@@ -67,7 +67,7 @@ export function Navbar({ user, setUser }) {
                 </div>
             </div>
             {/* {logout button} */}
-            <button className={`${log ? 'translate-y-[193%]' : 'translate-y-[-193%]'} transition-all duration-200 ease-in-out absolute right-[11%]  bg-pink-700 hover:bg-pink-900 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer`} onClick={handleLogout}>Logout</button>
+            <button className={`${log ? 'translate-y-[193%]' : 'translate-y-[-193%]'}  transition-all duration-200 ease-in-out fixed right-[10%]  bg-pink-700 hover:bg-pink-900 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer `} onClick={handleLogout}>Logout</button>
 
             {/* mobile menu  */}
             <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden  absolute w-full z-40`}>
