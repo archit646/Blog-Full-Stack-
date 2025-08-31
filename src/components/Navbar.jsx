@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router'
 import { FaBars } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdAdd } from "react-icons/io";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 export function Navbar({ user, setUser }) {
 
 
@@ -41,9 +41,9 @@ export function Navbar({ user, setUser }) {
                 <div className="links hidden sm:block">
                     <div className="flex gap-3">
 
-                        <div><NavLink to='/' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Home</NavLink></div>
-                        <div><NavLink to='/about' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">About</NavLink></div>
-                        <div><NavLink to='/contact' className="bg-blue-700 text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900">Contact</NavLink></div>
+                        <div><NavLink to='/' className={({isActive})=>`${isActive?"bg-red-700":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>Home</NavLink></div>
+                        <div><NavLink to='/about' className={({isActive})=>`${isActive?"bg-red-700":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>About</NavLink></div>
+                        <div><NavLink to='/contact' className={({isActive})=>`${isActive?"bg-red-700":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>Contact</NavLink></div>
 
                     </div>
 
