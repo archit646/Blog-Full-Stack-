@@ -33,7 +33,7 @@ export function Navbar({ user, setUser }) {
 
 
     return (
-        <div className="relative w-full hidden">
+        <div className="relative w-full">
             <div className="navbar fixed w-full flex items-center justify-around sm:justify-around bg-amber-400 top-0 z-999">
 
                 <img className="logo max-w-[60px] max-h-[60px] sm:max-w-[90px] sm:max-h-[90px] scale-[230%] sm:scale-[230%]" src="/mylogo.png" alt="logo" />
