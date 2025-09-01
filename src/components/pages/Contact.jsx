@@ -1,5 +1,28 @@
+import { useState } from "react";
 
 export function Contact() {
+  const [feedback, setFeedback] = useState({ 'name': '', 'email': '', 'message': '' })
+  
+  const handleChange = (e) => {
+    setFeedback({
+      ...feedback,
+      [e.target.name]:e.target.value
+
+    })
+    
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (feedback.name === '' || feedback.email === '' || feedback.message === '') {
+      alert('All Fields are Required')
+    }
+    alert('Send Successfully')
+    setFeedback({
+      name: '',
+      email: '',
+      message:''
+    })
+  }
   return (
     <div className="max-w-4xl mx-auto p-6 min-h-screen pt-[70px]">
       {/* Title */}
@@ -10,20 +33,21 @@ export function Contact() {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Contact Form */}
-        <form name="contact" method="POST" data-netlify="true" className="space-y-4 bg-white shadow-md rounded-2xl p-6">
+        <form onSubmit={handleSubmit} name="contact" method="POST" data-netlify="true" className="space-y-4 bg-white shadow-md rounded-2xl p-6">
+          
           <input
             type="text"
-            placeholder="Your Name"
+            placeholder="Your Name" value={feedback.name} onChange={handleChange} name="name"
             className="w-full border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
           />
           <input
             type="email"
-            placeholder="Your Email"
+            placeholder="Your Email" value={feedback.email} onChange={handleChange} name="email"
             className="w-full border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
           />
           <textarea
             placeholder="Your Message"
-            rows="5"
+            rows="5" value={feedback.message} onChange={handleChange} name="message"
             className="w-full border p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
           ></textarea>
           <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
