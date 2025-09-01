@@ -67,10 +67,10 @@ export function Navbar({ user, setUser }) {
                 </div>
             </div>
             {/* {logout button} */}
-            <button className={`${log ? 'translate-y-[193%]' : 'translate-y-[-193%]'}  transition-all duration-300 ease-in-out fixed right-[10%]  bg-pink-700 hover:bg-pink-900 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer `} onClick={handleLogout}>Logout</button>
+            <button className={`${log ? 'translate-y-[125%] sm:translate-y-[190%]' : 'translate-y-[-125%] sm:translate-y-[-190%]'} z-50 transition-all duration-300 ease-in-out fixed  w-full bg-pink-700 hover:bg-pink-900 text-white font-semibold px-2 py-1 rounded-sm cursor-pointer `} onClick={handleLogout}>Logout</button>
 
             {/* mobile menu  */}
-            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden  absolute w-full z-40`}>
+            <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden fixed w-full z-40`}>
                 <div className="bg-amber-700 text-white font-semibold p-1 flex flex-col items-center">
                     <NavLink to="/" className="w-full border"><div onClick={() => setMenu(false)} className=" p-[10px]">Home</div></NavLink>
                     <NavLink to='/about' className="w-full border"><div onClick={() => setMenu(false)} className=" p-[10px]">About</div></NavLink>

@@ -6,22 +6,22 @@ export function Footer() {
 
             <div className="relative">
                 <div className="w-full h-auto bottom-0 bg-black grid grid-cols-12">
-                    <div className="col-span-4  flex items-center justify-center overflow-hidden ">
+                    <div className="col-span-12 sm:col-span-4 flex items-center justify-center overflow-hidden">
                         <img className="logo invert max-w-[200px] max-h-[200px] scale-[230%]" src="/mylogo.png" alt="logo" />
                     </div>
-                    <div className="h-fit col-span-8 mx-auto md:py-4 py-4 flex  flex-col justify-between items-center">
+                    <div className="h-fit col-span-12 sm:col-span-8 mx-auto md:py-4 py-4 flex  flex-col justify-between items-center">
 
 
                         <div className="flex flex-col gap-4 items-center">
-                            <ul className="flex lg:gap-6 md:gap-4 md:flex-row flex-col justify-center md:text-xl text-lg md:mt-0 mt-4 md:font-semibold text-gray-300">
-                                <li className="">
-                                    <NavLink to='/' className="text-gold">Home</NavLink >
+                            <ul className="flex lg:gap-6 md:gap-4 md:flex-row sm:flex-col justify-center md:text-xl text-lg md:mt-0 mt-4 md:font-semibold text-gray-300">
+                                <li className="p-4 font-semibold">
+                                    <NavLink to='/' className={({isActive})=>`${isActive?'text-green-400':'text-white'}`}>Home</NavLink >
                                 </li >
-                                <li className="" >
-                                    <NavLink to='about/' className="hover:text-gold" > About</NavLink >
+                                <li className="p-4 font-semibold" >
+                                    <NavLink to='/about' className={({isActive})=>`${isActive?'text-green-400':'text-white'}`} > About</NavLink >
                                 </li >
-                                <li className="" >
-                                    <NavLink to='contact/' className="hover:text-gold" > Contact</NavLink >
+                                <li className="p-4 font-semibold" >
+                                    <NavLink to='/contact' className={({isActive})=>`${isActive?'text-green-400':'text-white'}`}> Contact</NavLink >
                                 </li >
                             </ul >
 
