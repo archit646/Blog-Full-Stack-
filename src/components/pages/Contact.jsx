@@ -15,6 +15,7 @@ export function Contact() {
     e.preventDefault()
     if (feedback.name === '' || feedback.email === '' || feedback.message === '') {
       alert('All Fields are Required')
+      return
     }
     alert('Send Successfully')
     setFeedback({
