@@ -83,7 +83,7 @@ function App() {
 
 
   return (
-    <div className='max-w-screen'>
+    <div className='max-w-screen-2xl mx-auto'>
       <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path='/' element={<Home token={token} posts={posts} recent={recent} categories={categories} setCategories={setCategories} category={category} />}></Route>
