@@ -72,9 +72,9 @@ export function Navbar({ user, setUser }) {
             {/* mobile menu  */}
             <div className={`menu ${menu ? 'block' : 'hidden'} mt-[41px] sm:hidden fixed w-full z-40`}>
                 <div className="bg-amber-700 text-white font-semibold p-1 flex flex-col items-center">
-                    <NavLink to="/" className="w-full border"><div onClick={() => setMenu(false)} className=" p-[10px]">Home</div></NavLink>
-                    <NavLink to='/about' className="w-full border"><div onClick={() => setMenu(false)} className=" p-[10px]">About</div></NavLink>
-                    <NavLink to='/contact' className="w-full border"><div onClick={() => setMenu(false)} className=" p-[10px]">Contact</div></NavLink>
+                    <NavLink to="/" className="w-full border hover:bg-green-700"><div onClick={() => setMenu(false)} className=" p-[10px]">Home</div></NavLink>
+                    <NavLink to='/about' className="w-full border hover:bg-green-700"><div onClick={() => setMenu(false)} className=" p-[10px]">About</div></NavLink>
+                    <NavLink to='/contact' className="w-full border hover:bg-green-700"><div onClick={() => setMenu(false)} className=" p-[10px]">Contact</div></NavLink>
                 </div>
             </div>
         </div>
