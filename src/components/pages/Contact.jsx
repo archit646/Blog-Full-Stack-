@@ -35,6 +35,7 @@ export function Contact() {
       <div className="grid md:grid-cols-2 gap-8">
         {/* Contact Form */}
         <form onSubmit={handleSubmit} name="contact" method="POST" data-netlify="true" className="space-y-4 bg-white shadow-md rounded-2xl p-6">
+          <input type="hidden" name="form-name" value="contact" />
           
           <input
             type="text"
