@@ -83,7 +83,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='w-full'>
       <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path='/' element={<Home token={token} posts={posts} recent={recent} categories={categories} setCategories={setCategories} category={category} />}></Route>
@@ -95,7 +95,7 @@ function App() {
         <Route path='UpdatePost/:pk' element={<UpdatePost token={token} setUser={setUser} user={user} category={category} categories={categories} setCategories={setCategories} body={body} setBody={setBody}  setCategory={setCategory} title={title} image={image} setTitle={setTitle} setImage={setImage}  />}></Route>
       </Routes>
       <Footer />
-    </>
+    </div>
 
   )
 }
