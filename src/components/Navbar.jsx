@@ -41,9 +41,9 @@ export function Navbar({ user, setUser }) {
                 <div className="links hidden sm:block">
                     <div className="flex gap-3">
 
-                        <div><NavLink to='/' className={({isActive})=>`${isActive?"bg-red-700":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>Home</NavLink></div>
-                        <div><NavLink to='/about' className={({isActive})=>`${isActive?"bg-red-700":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>About</NavLink></div>
-                        <div><NavLink to='/contact' className={({isActive})=>`${isActive?"bg-red-700":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>Contact</NavLink></div>
+                        <div><NavLink to='/' className={({isActive})=>`${isActive?"bg-red-700 hover:bg-red-700 cursor-default":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>Home</NavLink></div>
+                        <div><NavLink to='/about' className={({isActive})=>`${isActive?"bg-red-700 hover:bg-red-700 cursor-default":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>About</NavLink></div>
+                        <div><NavLink to='/contact' className={({isActive})=>`${isActive?"bg-red-700 hover:bg-red-700 cursor-default":"bg-blue-700"} text-white font-semibold px-2 py-1 rounded-sm hover:bg-blue-900`}>Contact</NavLink></div>
 
                     </div>
 
