@@ -40,15 +40,15 @@ export function Home({ posts, category, categories, recent, token }) {
 
                     <div className='col-span-12 sm:col-span-10 border bg-red-300 w-full'>
                         <h1 className='text-center text-2xl sm:text-3xl font-bold p-3'>All Posts</h1>
-                        <div className='category flex sm:justify-between gap-3 w-full mx-auto bg-blue-600 p-3 overflow-auto'>
-                            <div className="category flex sm:justify-center gap-3 w-full mx-auto">
+                        <div className='category grid grid-cols-12 sm:justify-between gap-3 w-full mx-auto bg-blue-600 p-3'>
+                            <div className="category flex sm:justify-center gap-3 w-full overflow-auto col-span-12 sm:col-span-10">
                                 <span className={`${selectedCate === 'all' ? 'bg-green-700' : 'bg-amber-600 hover:bg-amber-800'} text-white font-semibold rounded-sm  cursor-pointer px-2 py-1`} onClick={() => setSelectedCate('all')}>All</span>
                                 {categories?.map((item) => {
                                     return <span key={item.id} className={`${selectedCate === item.name ? 'bg-green-700' : 'bg-amber-600 hover:bg-amber-800'} text-white text:sm font-semibold rounded-sm min-h-1 cursor-pointer whitespace-nowrap px-2 py-1`} onClick={() => setSelectedCate(item.name)}>{item.name}</span>
                                 })}
                             </div>
-                            <div className="">
-                                <input type="search" placeholder="Search" className="p-1 border col-span-10 bg-white text-gray-600 rounded-sm" value={term} onChange={(e) => setTerm(e.target.value.trim())}></input>
+                            <div className="w-full flex justify-center col-span-12 sm:col-span-2">
+                                <input type="search" placeholder="Search" className="p-1 border border-black  col-span-10 bg-white text-gray-600 rounded-sm" value={term} onChange={(e) => setTerm(e.target.value.trim())}></input>
                                 {/* <button className="col-span-2 flex items-center cursor-pointer" onClick={handleSposts}>S</button> */}
 
                             </div>
