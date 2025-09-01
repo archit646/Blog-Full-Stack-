@@ -32,7 +32,7 @@ export function Home({ posts, category, categories, recent, token }) {
                     <Slider posts={posts} token={token} />
                 </div>
                 <div className='grid w-full grid-cols-12 gap-3'>
-                    <div className='col-span-4 sm:col-span-2 border bg-red-300 p-2 hidden sm:block'>
+                    <div className='order-2 col-span-12 sm:col-span-2 border bg-red-300 p-2 sm:block'>
                         <h1 className='text-center text-xl sm:text-2xl font-bold p-3'>Recent Posts</h1>
 
                         <Sidebar posts={recent} />
