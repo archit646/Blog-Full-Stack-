@@ -26,7 +26,7 @@ export function Home({ posts, category, categories, recent, token }) {
 
     return (
         <>
-            <div className='main bg-green-800  flex flex-col justify-center items-center min-h-screen'>
+            <div className='main bg-green-800  flex flex-col justify-center items-center min-h-screen w-full'>
                 <div className='trending pt-[70px] w-full'>
                     <h1 className='text-center text-3xl font-bold text-white'>Trending Posts</h1>
                     <Slider posts={posts} token={token} />
