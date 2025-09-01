@@ -40,7 +40,7 @@ export function Home({ posts, category, categories, recent, token }) {
 
                     <div className='col-span-12 sm:col-span-10 border bg-red-300 w-full'>
                         <h1 className='text-center text-2xl sm:text-3xl font-bold p-3'>All Posts</h1>
-                        <div className='category flex sm:justify-between gap-3 w-full mx-auto bg-blue-600 p-3 '>
+                        <div className='category flex sm:justify-between gap-3 w-full mx-auto bg-blue-600 p-3 overflow-hidden'>
                             <div className="category flex sm:justify-center gap-3 w-full mx-auto">
                                 <span className={`${selectedCate === 'all' ? 'bg-green-700' : 'bg-amber-600 hover:bg-amber-800'} text-white font-semibold rounded-sm  cursor-pointer px-2 py-1`} onClick={() => setSelectedCate('all')}>All</span>
                                 {categories?.map((item) => {
