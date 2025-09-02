@@ -66,7 +66,7 @@ export function Detail({ token, user }) {
             <div className="main grid grid-cols-12 min-h-screen gap-3 bg-amber-600 overflow-auto">
                 <div className="left-box bg-white col-span-12 sm:col-span-10 pt-[70px] flex flex-col p-3  gap-4 h-full">
                     <div className="bg-gray-600 p-3 flex flex-col items-center rounded-md gap-3">
-                        <h1 className="font-bold text-3xl line-clamp-1 break-words text-white p-1">{singlePost.title}</h1>
+                        <h1 className="font-bold text-3xl line-clamp-2 break-words text-white p-1">{singlePost.title}</h1>
                         <div className="flex justify-between gap-3 text-white">
                             <span className="py-1 px-2 bg-gray-800 flex text-sm items-center gap-1"><IoPerson />Author-<span>{singlePost.author?.username}</span></span>
                             <span className="py-1 px-2 bg-gray-800 flex text-sm items-center gap-1"><SlCalender />Created-<span>{singlePost.created_at}</span></span>
