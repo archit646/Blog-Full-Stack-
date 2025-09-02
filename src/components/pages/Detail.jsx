@@ -7,7 +7,7 @@ import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-export function Detail({ token }) {
+export function Detail({ token, user }) {
     const navigate = useNavigate()
     const { pk } = useParams()
     const [releated, setReleated] = useState([])
@@ -33,7 +33,7 @@ export function Detail({ token }) {
         } catch (error) {
             alert('Sorry,You Cannot Delete This Post')
         }
-       
+
     }
     async function commentPost(e) {
         e.preventDefault()
@@ -59,7 +59,8 @@ export function Detail({ token }) {
         getreleated()
         getsingle()
     }, [])
-
+    console.log(user)
+    console.log(singlePost.author?.username)
     return (
         <>
             <div className="main grid grid-cols-12 min-h-screen gap-3 bg-amber-600 overflow-auto">
@@ -67,14 +68,16 @@ export function Detail({ token }) {
                     <div className="bg-gray-600 p-3 flex flex-col items-center rounded-md gap-3">
                         <h1 className="font-bold text-3xl line-clamp-1 break-words text-white p-1">{singlePost.title}</h1>
                         <div className="flex justify-between gap-3 text-white">
-                            <span className="py-1 px-2 bg-gray-800 flex items-center gap-1"><IoPerson />Author-<span>{singlePost.author?.username}</span></span>
-                            <span className="py-1 px-2 bg-gray-800 flex items-center gap-1"><SlCalender />Created-<span>{singlePost.created_at}</span></span>
+                            <span className="py-1 px-2 bg-gray-800 flex text-sm items-center gap-1"><IoPerson />Author-<span>{singlePost.author?.username}</span></span>
+                            <span className="py-1 px-2 bg-gray-800 flex text-sm items-center gap-1"><SlCalender />Created-<span>{singlePost.created_at}</span></span>
                         </div>
-                        <div className="btn-container text-white flex gap-2">
-                            <NavLink to={`/updatePost/${singlePost.id}`} state={singlePost} className=" px-2 flex justify-center items-center py-1 bg-green-500 font-semibold rounded-sm cursor-pointer">Update</NavLink>
-                            <button onClick={deletePost} className=" px-2 flex justify-center items-center py-1 bg-red-500 font-semibold rounded-sm cursor-pointer">Delete</button>
+                        
+                            <div className={`${user.trim().toLowerCase()==singlePost.author?.username.trim().toLowerCase()?'block':'hidden'} btn-container flex text-white gap-2`}>
+                                <NavLink to={`/updatePost/${singlePost.id}`} state={singlePost} className=" px-2 flex justify-center items-center py-1 bg-green-500 font-semibold rounded-sm cursor-pointer">Update</NavLink>
+                                <button onClick={deletePost} className=" px-2 flex justify-center items-center py-1 bg-red-500 font-semibold rounded-sm cursor-pointer">Delete</button>
 
-                        </div>
+                            </div>
+                       
                     </div>
 
                     <img className="w-[80%] h-[30%] object-cover mx-auto" src={singlePost.thumbnail}></img>
