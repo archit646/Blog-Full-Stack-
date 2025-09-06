@@ -7,10 +7,13 @@ export function LoginReg({setUser}) {
     const navigate=useNavigate()
 
     const [active, setActive] = useState('Login')
+    const [btnText,setBtnText]=useState(active==='Login'?'Login':'Register')
     const [registerData, setRegisterData] = useState({ 'username': '', 'email': '', 'password': '' , 'check':false , 'confirm_password':'' })
     const [loginData, setLoginData] = useState({ 'username': '', 'password': '' })
     // const [btnText,setBtnText]=useState()
-    
+     useEffect(() => {
+        setBtnText(active === "Login" ? "Login" : "Register");
+    }, [active]);
     const handleRegisterChange = (e) => {
         setRegisterData({
             ...registerData,
@@ -44,7 +47,7 @@ export function LoginReg({setUser}) {
             password:registerData.password
         }
         try {
-            setActive('Registering...')
+            setBtnText('Registering...')
             const res = await axios.post('https://myapp00.pythonanywhere.com/api/register/', payload)
             
             console.log(res.data)
@@ -70,7 +73,7 @@ export function LoginReg({setUser}) {
         }
         const payload={username:loginData.username,password:loginData.password}
         try {
-            setActive('Logging...')
+            setBtnText('Logging...')
             
             const res=await axios.post('https://myapp00.pythonanywhere.com/api/token/',payload)
             // jwt token
@@ -86,7 +89,7 @@ export function LoginReg({setUser}) {
             
 
         }
-        
+       
     }
    
    
@@ -113,7 +116,7 @@ export function LoginReg({setUser}) {
                                     <span className=" w-full font-semibold">Password</span>
                                     <input name="password" value={loginData.password} type="password" placeholder="Password" className="border w-full p-2 rounded-md" onChange={handleLoginChange}></input>
                                 </div>
-                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">{active}</button>
+                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">{btnText}</button>
 
 
                             </form>
@@ -139,7 +142,7 @@ export function LoginReg({setUser}) {
                                     <span className=" w-full font-semibold">I agree to Terms & Conditions</span>
                                 </div>
 
-                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">{active}</button>
+                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">{btnText}</button>
 
 
                             </form>
