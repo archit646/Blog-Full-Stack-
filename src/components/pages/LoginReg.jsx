@@ -6,9 +6,10 @@ import { useNavigate } from "react-router"
 export function LoginReg({setUser}) {
     const navigate=useNavigate()
 
-    const [active, setActive] = useState('login')
+    const [active, setActive] = useState('Login')
     const [registerData, setRegisterData] = useState({ 'username': '', 'email': '', 'password': '' , 'check':false , 'confirm_password':'' })
     const [loginData, setLoginData] = useState({ 'username': '', 'password': '' })
+    // const [btnText,setBtnText]=useState()
     
     const handleRegisterChange = (e) => {
         setRegisterData({
@@ -43,16 +44,18 @@ export function LoginReg({setUser}) {
             password:registerData.password
         }
         try {
+            setActive('Registering...')
             const res = await axios.post('https://myapp00.pythonanywhere.com/api/register/', payload)
             
             console.log(res.data)
             alert('Registerd Successfully')
             setRegisterData({ 'username': '', 'email': '', 'password': '' , 'confirm_password':'' , 'check':false })
            
-            setActive('login')
+            setActive('Login')
         } catch (error) {
             console.log(error)
         }
+        
     }
     const handleLoginSubmit=async(e)=>{
         e.preventDefault()
@@ -66,7 +69,9 @@ export function LoginReg({setUser}) {
             return;
         }
         const payload={username:loginData.username,password:loginData.password}
-        try{
+        try {
+            setActive('Logging...')
+            
             const res=await axios.post('https://myapp00.pythonanywhere.com/api/token/',payload)
             // jwt token
             localStorage.setItem('access_token',res.data.access);
@@ -75,12 +80,13 @@ export function LoginReg({setUser}) {
             alert('Login Successfully')
             setUser(loginData.username)
             navigate('/')
-            console.log('login Successfull')
+            console.log('Login Successfull')
         }catch(error){
             alert('Wrong Username or Password')
             
 
         }
+        
     }
    
    
@@ -93,11 +99,11 @@ export function LoginReg({setUser}) {
                 </div>
                 <div className="col-span-12 sm:col-span-6 flex justify-center items-center flex-col gap-10 bg-white">
                     <div className="options-container flex border-b-1 w-full justify-center pb-1 gap-5 text-black">
-                        <button className={`flex  justify-center items-center cursor-pointer font-semibold px-4 py-1 ${active == 'login' ? 'border-b-5 border-black' : 'border-none'}`} onClick={() => setActive('login')}>Login</button>
-                        <button className={`flex  justify-center items-center cursor-pointer font-semibold px-4 py-1 ${active == 'register' ? 'border-b-5 border-black' : 'border-none'}`} onClick={() => setActive('register')}>Register</button>
+                        <button className={`flex  justify-center items-center cursor-pointer font-semibold px-4 py-1 ${active == 'Login' ? 'border-b-5 border-black' : 'border-none'}`} onClick={() => setActive('Login')}>Login</button>
+                        <button className={`flex  justify-center items-center cursor-pointer font-semibold px-4 py-1 ${active == 'Register' ? 'border-b-5 border-black' : 'border-none'}`} onClick={() => setActive('Register')}>Register</button>
                     </div>
                     <div className="form-container  sm:w-[70%] h-[80%] p-3  rounded-2xl ">
-                        {active == 'login'
+                        {active == 'Login'
                             ? <form onSubmit={handleLoginSubmit} className="login-form flex flex-col gap-5 p-3 rounded-2xl  bg-gray-200">
                                 <div className="row">
                                     <span className=" w-full font-semibold" >Username</span>
@@ -107,7 +113,7 @@ export function LoginReg({setUser}) {
                                     <span className=" w-full font-semibold">Password</span>
                                     <input name="password" value={loginData.password} type="password" placeholder="Password" className="border w-full p-2 rounded-md" onChange={handleLoginChange}></input>
                                 </div>
-                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">Login</button>
+                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">{active}</button>
 
 
                             </form>
@@ -133,7 +139,7 @@ export function LoginReg({setUser}) {
                                     <span className=" w-full font-semibold">I agree to Terms & Conditions</span>
                                 </div>
 
-                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">Register</button>
+                                <button type="submit" className="w-[30%] mx-auto bg-blue-600 font-semibold text-white p-1 flex items-center justify-center rounded-2xl cursor-pointer hover:bg-blue-800">{active}</button>
 
 
                             </form>

@@ -6,7 +6,9 @@ import { useNavigate } from "react-router"
 
 export function NewPost({ title, setTitle, body, setBody, category, categories, setCategory, image, setImage, token, btnText, setBtnText, isUpdate }) {
     const navigate = useNavigate()
-    setBtnText('Post')
+    useEffect(() => {
+         setBtnText('Post')
+    },[])
     useEffect(() => {
         setTitle('')
         setBody('')

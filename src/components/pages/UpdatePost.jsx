@@ -9,7 +9,10 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
     const location = useLocation()
     const prevPost = location.state
     const navigate = useNavigate()
-    setBtnText('Update')
+    useEffect(() => {
+         setBtnText('Update')
+    },[])
+   
 
 
     useEffect(() => {
