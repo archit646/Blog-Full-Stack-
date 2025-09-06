@@ -1,12 +1,103 @@
-# React + Vite
+# 📝 Blog Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **Full Stack Blog Website** built using **React**, **Django**, and **MySQL**. This project allows users to create, read, update, and delete blog posts, with authentication and authorization features.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔐 **User Authentication** (Register, Login, Logout)
+- ✍️ **Create, Update, and Delete Blogs**
+- 📜 **View All Blogs and Single Blog Details**
+- 👤 **Profile Management**
+- 🗄 **MySQL Database Integration**
+- 🎨 **Responsive UI with Tailwind CSS**
+- ⚡ **REST API built using Django REST Framework**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React.js
+- Tailwind CSS
+- Axios
+
+**Backend:**
+- Django
+- Django REST Framework (DRF)
+
+**Database:**
+- MySQL
+
+**Tools & Others:**
+- Git & GitHub
+- Postman for API testing
+- VS Code
+
+---
+
+## 📂 Project Structure
+
+```
+blog-website/
+│── frontend/       # React code
+│── backend/        # Django code
+│── manage.py       # Django entry point
+│── db.sqlite3      # MySQL / SQLite database
+│── package.json    # Frontend dependencies
+│── requirements.txt # Backend dependencies
+│── README.md
+```
+
+---
+
+## ⚙️ Installation and Setup
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/archit646/Blog-Full-Stack-.git
+cd Blog-Full-Stack-
+```
+
+### 2️⃣ Setup Backend (Django)
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate   # For Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+
+### 3️⃣ Setup Frontend (React)
+```bash
+cd frontend
+npm install
+npm start
+```
+
+---
+
+## 🔗 API Endpoints
+
+| Endpoint             | Method | Description         |
+|---------------------|--------|---------------------|
+| `/api/posts/`       | GET    | Get all posts       |
+| `/api/posts/:id/`   | GET    | Get single post     |
+| `/api/posts/create/`| POST   | Create new post     |
+| `/api/posts/:id/`   | PUT    | Update post         |
+| `/api/posts/:id/`   | DELETE | Delete post         |
+
+---
+
+## 👨‍💻 Author
+
+**Archit Kumar**  
+📧 Email: architk471@gmail.com  
+💼 LinkedIn: [linkedin.com/in/archit646](https://linkedin.com/in/archit646)  
+💻 GitHub: [github.com/archit646](https://github.com/archit646)
+
+
+
