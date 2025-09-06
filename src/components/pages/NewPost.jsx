@@ -4,14 +4,15 @@ import { Form } from "../Form"
 import { useNavigate } from "react-router"
 
 
-export function NewPost({title,setTitle,body,setBody,category,categories,setCategory,image,setImage,token}) {
+export function NewPost({ title, setTitle, body, setBody, category, categories, setCategory, image, setImage, token, btnText, setBtnText, isUpdate }) {
     const navigate = useNavigate()
+    setBtnText('Post')
     useEffect(() => {
         setTitle('')
         setBody('')
         setCategory('')
         setImage(null)
-    },[])
+    }, [])
 
     const handlePostSubmit = async (e) => {
         e.preventDefault()
@@ -23,14 +24,16 @@ export function NewPost({title,setTitle,body,setBody,category,categories,setCate
             formData.append('thumbnail', image)
         }
         try {
-            
+            setBtnText('Posting....')
             const res = await axios.post('https://myapp00.pythonanywhere.com/api/posts/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`
                 }
+
             })
-           
+
+
             console.log('success:', res.data)
             navigate('/')
 
@@ -42,7 +45,7 @@ export function NewPost({title,setTitle,body,setBody,category,categories,setCate
             // console.log('Error:', error)
         }
 
-
+        setBtnText('Post')
 
     }
     return (
@@ -59,6 +62,8 @@ export function NewPost({title,setTitle,body,setBody,category,categories,setCate
                     categories={categories}
                     handlePostSubmit={handlePostSubmit}
                     isUpdate={false}
+                    btnText={btnText}
+
                 />
             </div>
         </>

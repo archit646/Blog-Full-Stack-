@@ -6,7 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 
 
 
-export function Form({ title, body, category, categories, handlePostSubmit, handleUpdateSubmit, setTitle, setBody, image, setImage, setCategory, isUpdate, imageName }) {
+export function Form({ title, body, category, categories, handlePostSubmit, handleUpdateSubmit, setTitle, setBody, image, setImage, setCategory, isUpdate, imageName,btnText}) {
     // console.log(image.name)
     
     // console.log(categories)
@@ -14,6 +14,7 @@ export function Form({ title, body, category, categories, handlePostSubmit, hand
     // const [text,setText]=useState('')
     const quillRef = useRef(null);
     const [fileName, setFileName] = useState(imageName)
+    
 
     const handleFileChange = (e) => {
         if(e.target.files && e.target.files.length > 0) {
@@ -53,7 +54,8 @@ export function Form({ title, body, category, categories, handlePostSubmit, hand
                         <label className={`${ fileName?'block':'hidden'} border text-sm  overflow-hidden h-[30px] p-1 line-clamp-1`}>{fileName}</label>
                     </div>
                 </div>
-                <button type="submit" className="w-[30%] border rounded-sm font-semibold bg-red-700 hover:bg-red-900 text-white cursor-pointer">{isUpdate ? 'Update' : 'Post'}</button>
+                {/* <button type="submit" className="w-[30%] border rounded-sm font-semibold bg-red-700 hover:bg-red-900 text-white cursor-pointer">{isUpdate ? 'Update' : 'Post'}</button> */}
+                <button type="submit" className="w-[30%] border rounded-sm font-semibold bg-red-700 hover:bg-red-900 text-white cursor-pointer">{btnText}</button>
 
             </form>
         </div>

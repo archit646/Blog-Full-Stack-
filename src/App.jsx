@@ -21,6 +21,7 @@ import { UpdatePost } from './components/pages/UpdatePost';
 // import './App.css'
 
 function App() {
+  const isUpdate=null
   const token = localStorage.getItem('access_token')
 
   const location = useLocation();
@@ -32,7 +33,8 @@ function App() {
   const [categories, setCategories] = useState([])
   const [body, setBody] = useState('')
   const [user, setUser] = useState(localStorage.getItem('username') || '')
-
+  const [btnText, setBtnText] = useState(isUpdate ? 'Update' : 'Post')
+  
   async function getPosts() {
     try {
       let res = await axios.get('https://myapp00.pythonanywhere.com/api/posts/')
@@ -90,9 +92,9 @@ function App() {
         <Route path='about/' element={<About />}></Route>
         <Route path='contact/' element={<Contact />}></Route>
         <Route path='detail/posts/:pk/' element={<Detail body={body} token={token} user={user} />}></Route>
-        <Route path='newPost/' element={<NewPost token={token} setUser={setUser} user={user} category={category} body={body} setBody={setBody} categories={categories} setCategories={setCategories}  setCategory={setCategory} title={title} image={image} setTitle={setTitle} setImage={setImage} />}></Route>
+        <Route path='newPost/' element={<NewPost btnText={btnText} setBtnText={setBtnText} token={token} setUser={setUser} user={user} category={category} body={body} setBody={setBody} categories={categories} setCategories={setCategories}  setCategory={setCategory} title={title} image={image} setTitle={setTitle} setImage={setImage} />}></Route>
         <Route path='loginReg/' element={<LoginReg setUser={setUser} />}></Route>
-        <Route path='UpdatePost/:pk' element={<UpdatePost token={token} setUser={setUser} user={user} category={category} categories={categories} setCategories={setCategories} body={body} setBody={setBody}  setCategory={setCategory} title={title} image={image} setTitle={setTitle} setImage={setImage}  />}></Route>
+        <Route path='UpdatePost/:pk' element={<UpdatePost btnText={btnText} setBtnText={setBtnText} token={token} setUser={setUser} user={user} category={category} categories={categories} setCategories={setCategories} body={body} setBody={setBody}  setCategory={setCategory} title={title} image={image} setTitle={setTitle} setImage={setImage}  />}></Route>
       </Routes>
       <Footer />
     </div>

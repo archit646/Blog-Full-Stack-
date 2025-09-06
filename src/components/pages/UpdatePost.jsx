@@ -5,10 +5,11 @@ import { useNavigate } from "react-router"
 import { useLocation } from "react-router"
 
 
-export function UpdatePost({ title, setTitle, body, setBody, category, setCategory, categories, image, setImage, token }) {
+export function UpdatePost({ title, setTitle, body, setBody, category, setCategory, categories, image, setImage, token, btnText, setBtnText, isUpdate }) {
     const location = useLocation()
     const prevPost = location.state
     const navigate = useNavigate()
+    setBtnText('Update')
 
 
     useEffect(() => {
@@ -26,10 +27,11 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
         formData.append('category', category)
         formData.append('content', body)
         if (image instanceof File) {
-            formData.append('thumbnail',image)
+            formData.append('thumbnail', image)
         }
 
         try {
+            setBtnText('Updating....')
             const res = await axios.put(`https://myapp00.pythonanywhere.com/api/posts/${prevPost.id}/`, formData, {
                 headers: {
                     // 'Content-Type': 'multipart/form-data',
@@ -41,9 +43,9 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
             console.log('success')
         } catch (error) {
             alert('Sorry You Cannot Update This Post')
-            
-        }
 
+        }
+        setBtnText('Update')
 
     }
 
@@ -64,6 +66,7 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
                     handleUpdateSubmit={handleUpdateSubmit}
                     prevPost={prevPost}
                     isUpdate={true}
+                    btnText={btnText}
 
 
                 />
