@@ -48,7 +48,7 @@ export function LoginReg({setUser}) {
         }
         try {
             setBtnText('Registering...')
-            const res = await axios.post('https://myapp00.pythonanywhere.com/api/register/', payload)
+            const res = await axios.post('https://myapp002.pythonanywhere.com/api/register/', payload)
             
             console.log(res.data)
             alert('Registerd Successfully')
@@ -75,7 +75,7 @@ export function LoginReg({setUser}) {
         try {
             setBtnText('Logging...')
             
-            const res=await axios.post('https://myapp00.pythonanywhere.com/api/token/',payload)
+            const res=await axios.post('https://myapp002.pythonanywhere.com/api/token/',payload)
             // jwt token
             localStorage.setItem('access_token',res.data.access);
             localStorage.setItem('refresh_token', res.data.refresh);

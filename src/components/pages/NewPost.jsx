@@ -27,7 +27,7 @@ export function NewPost({ title, setTitle, body, setBody, category, categories, 
         }
         try {
             setBtnText('Posting....')
-            const res = await axios.post('https://myapp00.pythonanywhere.com/api/posts/', formData, {
+            const res = await axios.post('https://myapp002.pythonanywhere.com/api/posts/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`

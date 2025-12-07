@@ -35,7 +35,7 @@ export function UpdatePost({ title, setTitle, body, setBody, category, setCatego
 
         try {
             setBtnText('Updating....')
-            const res = await axios.put(`https://myapp00.pythonanywhere.com/api/posts/${prevPost.id}/`, formData, {
+            const res = await axios.put(`https://myapp002.pythonanywhere.com/api/posts/${prevPost.id}/`, formData, {
                 headers: {
                     // 'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`
