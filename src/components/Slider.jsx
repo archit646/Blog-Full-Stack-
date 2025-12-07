@@ -21,7 +21,7 @@ export function Slider({ posts,token}) {
     }
     const get_trending = async () => {
         try {
-            const res = await axios.get('https://myapp00.pythonanywhere.com/api/posts/trending/')
+            const res = await axios.get('https://myapp002.pythonanywhere.com/api/posts/trending/')
             setTrending(res.data)
         } catch (error) {
             console.log('Error', error)

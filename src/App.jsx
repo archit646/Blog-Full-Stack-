@@ -37,7 +37,7 @@ function App() {
   
   async function getPosts() {
     try {
-      let res = await axios.get('https://myapp00.pythonanywhere.com/api/posts/')
+      let res = await axios.get('https://myapp002.pythonanywhere.com/api/posts/')
       setPosts(res.data)
     }
     catch (error) {
@@ -48,7 +48,7 @@ function App() {
 
   async function getRecent() {
     try {
-      let res = await axios.get('https://myapp00.pythonanywhere.com/api/posts/recent/')
+      let res = await axios.get('https://myapp002.pythonanywhere.com/api/posts/recent/')
       setRecent(res.data)
     }
     catch (error) {
@@ -61,7 +61,7 @@ function App() {
 
   async function getCate() {
     try {
-      let res = await axios.get('https://myapp00.pythonanywhere.com/api/categories/')
+      let res = await axios.get('https://myapp002.pythonanywhere.com/api/categories/')
       setCategories(res.data)
 
     }
